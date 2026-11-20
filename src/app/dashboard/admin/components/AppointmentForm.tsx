@@ -26,25 +26,25 @@ const AppointmentForm = ({
 }: AppointmentFormProps) => {
   if (appointments.length === 0) {
     return (
-      <div className="rounded-lg border bg-white p-6 text-center text-gray-500">
+      <div className="rounded-lg border bg-card p-6 text-center text-gray-500">
         No appointments found.
       </div>
     );
   }
 
   return (
-    <div className="overflow-x-auto rounded-lg border bg-white">
+    <div className="overflow-x-auto rounded-lg border bg-card">
       <Table>
         <TableHeader>
           <TableRow className="bg-[#F5EBDD] hover:bg-[#F5EBDD]">
-            <TableHead className="text-[#4A382E]">Customer</TableHead>
-            <TableHead className="text-[#4A382E]">Service</TableHead>
-            <TableHead className="text-[#4A382E]">Date</TableHead>
-            <TableHead className="text-[#4A382E]">Time</TableHead>
-            <TableHead className="text-[#4A382E]">Price</TableHead>
-            <TableHead className="text-[#4A382E]">Status</TableHead>
-            <TableHead className="text-[#4A382E]">Payment</TableHead>
-            <TableHead className="text-[#4A382E]">Actions</TableHead>
+            <TableHead className="text-foreground">Customer</TableHead>
+            <TableHead className="text-foreground">Service</TableHead>
+            <TableHead className="text-foreground">Date</TableHead>
+            <TableHead className="text-foreground">Time</TableHead>
+            <TableHead className="text-foreground">Price</TableHead>
+            <TableHead className="text-foreground">Status</TableHead>
+            <TableHead className="text-foreground">Payment</TableHead>
+            <TableHead className="text-foreground">Actions</TableHead>
           </TableRow>
         </TableHeader>
 

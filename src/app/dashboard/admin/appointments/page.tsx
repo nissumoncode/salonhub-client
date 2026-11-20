@@ -1,12 +1,12 @@
 "use client";
-
+import BackToHome from "@/components/BackToHome";
 import { useCallback, useEffect, useState } from "react";
 import {
   getAllAppointments,
   updateAppointmentStatus,
 } from "@/services/appointmentApi";
 import type { Appointment } from "@/types/appointment";
-import AppointmentForm from "../../components/AppointmentForm";
+import AppointmentForm from "../components/AppointmentForm";
 
 const ManageAppointmentsPage = () => {
   const [appointments, setAppointments] = useState<Appointment[]>([]);
@@ -73,8 +73,9 @@ const ManageAppointmentsPage = () => {
 
   return (
     <div className="space-y-6 p-6">
+      <BackToHome />
       <div>
-        <h1 className="text-2xl font-bold text-[#4A382E]">
+        <h1 className="text-2xl font-bold text-foreground">
           Manage Appointments
         </h1>
         <p className="mt-1 text-gray-500">

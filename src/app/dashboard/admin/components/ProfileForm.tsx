@@ -105,7 +105,7 @@ const ProfileForm = ({
   return (
     <Card className="border-[#E8DCCB]">
       <CardHeader>
-        <CardTitle className="text-[#4A382E]">Personal Information</CardTitle>
+        <CardTitle className="text-foreground">Personal Information</CardTitle>
         <CardDescription>Update your profile information.</CardDescription>
       </CardHeader>
 

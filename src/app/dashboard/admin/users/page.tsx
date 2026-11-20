@@ -1,14 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
+import BackToHome from "@/components/BackToHome";
 import {
   getAllCustomers,
   updateCustomerBlockStatus,
   type Customer,
 } from "@/services/userApi";
 
-import UserTable from "../../components/UserTable";
+import UserTable from "../components/UserTable";
 
 import {
   Card,
@@ -71,9 +71,10 @@ const ManageUsersPage = () => {
 
   return (
     <div className="space-y-6 p-6">
+      <BackToHome />
       <Card className="border-[#E8DCCB]">
         <CardHeader>
-          <CardTitle className="text-2xl text-[#4A382E]">
+          <CardTitle className="text-2xl text-foreground">
             Manage Users
           </CardTitle>
           <CardDescription>

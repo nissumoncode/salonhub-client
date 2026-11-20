@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   Sidebar,
   SidebarContent,
@@ -21,6 +22,8 @@ import {
 } from "lucide-react";
 
 const AdminSidebar = () => {
+  const pathname = usePathname();
+
   return (
     <Sidebar>
       <SidebarContent className="bg-[#4A382E] text-white">
@@ -31,8 +34,8 @@ const AdminSidebar = () => {
 
           <SidebarGroupContent>
             <SidebarMenu>
-              <SidebarMenuItem>
-                <SidebarMenuButton>
+              <SidebarMenuItem className="mb-2">
+                <SidebarMenuButton isActive={pathname === "/dashboard/admin"}>
                   <Link
                     href="/dashboard/admin"
                     className="flex w-full items-center gap-2"
@@ -43,8 +46,10 @@ const AdminSidebar = () => {
                 </SidebarMenuButton>
               </SidebarMenuItem>
 
-              <SidebarMenuItem>
-                <SidebarMenuButton>
+              <SidebarMenuItem className="mb-2">
+                <SidebarMenuButton
+                  isActive={pathname === "/dashboard/admin/services"}
+                >
                   <Link
                     href="/dashboard/admin/services"
                     className="flex w-full items-center gap-2"
@@ -55,8 +60,10 @@ const AdminSidebar = () => {
                 </SidebarMenuButton>
               </SidebarMenuItem>
 
-              <SidebarMenuItem>
-                <SidebarMenuButton>
+              <SidebarMenuItem className="mb-2">
+                <SidebarMenuButton
+                  isActive={pathname === "/dashboard/admin/appointments"}
+                >
                   <Link
                     href="/dashboard/admin/appointments"
                     className="flex w-full items-center gap-2"
@@ -67,8 +74,10 @@ const AdminSidebar = () => {
                 </SidebarMenuButton>
               </SidebarMenuItem>
 
-              <SidebarMenuItem>
-                <SidebarMenuButton>
+              <SidebarMenuItem className="mb-2">
+                <SidebarMenuButton
+                  isActive={pathname === "/dashboard/admin/users"}
+                >
                   <Link
                     href="/dashboard/admin/users"
                     className="flex w-full items-center gap-2"
@@ -79,8 +88,10 @@ const AdminSidebar = () => {
                 </SidebarMenuButton>
               </SidebarMenuItem>
 
-              <SidebarMenuItem>
-                <SidebarMenuButton>
+              <SidebarMenuItem className="mb-2">
+                <SidebarMenuButton
+                  isActive={pathname === "/dashboard/admin/transactions"}
+                >
                   <Link
                     href="/dashboard/admin/transactions"
                     className="flex w-full items-center gap-2"
@@ -90,8 +101,11 @@ const AdminSidebar = () => {
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
-              <SidebarMenuItem>
-                <SidebarMenuButton>
+
+              <SidebarMenuItem className="mb-2">
+                <SidebarMenuButton
+                  isActive={pathname === "/dashboard/admin/profile"}
+                >
                   <Link
                     href="/dashboard/admin/profile"
                     className="flex w-full items-center gap-2"

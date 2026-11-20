@@ -1,13 +1,13 @@
 "use client";
-
+import BackToHome from "@/components/BackToHome";
 import { useEffect, useState } from "react";
 import { getServices } from "@/services/serviceApi";
 import type { Service } from "@/types/service";
 import Image from "next/image";
 
-import AddService from "../../components/AddService";
-import EditService from "../../components/EditService";
-import DeleteService from "../../components/DeleteService";
+import AddService from "../components/AddService";
+import EditService from "../components/EditService";
+import DeleteService from "../components/DeleteService";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -75,9 +75,12 @@ const ManageServicesPage = () => {
 
   return (
     <div className="space-y-6 p-6">
+      <BackToHome />
       <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
         <div>
-          <h1 className="text-2xl font-bold text-[#4A382E]">Manage Services</h1>
+          <h1 className="text-2xl font-bold text-foreground">
+            Manage Services
+          </h1>
           <p className="mt-1 text-gray-500">
             View and manage all salon services.
           </p>
@@ -95,7 +98,7 @@ const ManageServicesPage = () => {
       ) : (
         <Card>
           <CardHeader>
-            <CardTitle className="text-[#4A382E]">All Services</CardTitle>
+            <CardTitle className="text-foreground">All Services</CardTitle>
           </CardHeader>
 
           <CardContent>

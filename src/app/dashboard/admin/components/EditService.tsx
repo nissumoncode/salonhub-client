@@ -99,7 +99,7 @@ const EditService = ({ service, onUpdated }: EditServiceProps) => {
 
       <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-xl">
         <DialogHeader>
-          <DialogTitle className="text-[#4A382E]">Edit Service</DialogTitle>
+          <DialogTitle className="text-foreground">Edit Service</DialogTitle>
           <DialogDescription>Update the service information.</DialogDescription>
         </DialogHeader>
 

@@ -105,7 +105,7 @@ const AddService = ({ onAdded }: AddServiceProps) => {
 
       <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-xl">
         <DialogHeader>
-          <DialogTitle className="text-[#4A382E]">Add New Service</DialogTitle>
+          <DialogTitle className="text-foreground">Add New Service</DialogTitle>
           <DialogDescription>
             Enter the details of your salon service.
           </DialogDescription>

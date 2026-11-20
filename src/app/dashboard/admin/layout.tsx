@@ -1,6 +1,6 @@
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import AdminSidebar from "@/app/dashboard/components/AdminSidebar";
-import AdminRouteProtect from "@/app/dashboard/components/AdminRouteProtect";
+import AdminSidebar from "@/app/dashboard/admin/components/AdminSidebar";
+import AdminRouteProtect from "@/app/dashboard/admin/components/AdminRouteProtect";
 
 const AdminLayout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -8,8 +8,8 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
       <SidebarProvider>
         <AdminSidebar />
 
-        <main className="min-h-screen flex-1 bg-[#F8F1E8]">
-          <div className="border-b border-[#E8D8C3] p-3">
+        <main className="min-h-screen flex-1 bg-[#FAF7F4]">
+          <div className="border-b bg-card p-4 flex items-center justify-between">
             <SidebarTrigger />
           </div>
 

@@ -1,10 +1,13 @@
 "use client";
-
+import BackToHome from "@/components/BackToHome";
 import { useEffect, useState } from "react";
-import ProfileHeader from "../../components/ProfileHeader";
-import ProfileForm from "../../components/ProfileForm";
-import ChangePassword from "../../components/ChangePassword";
-import { getMyProfile, type UserProfile } from "@/services/profileApi";
+import ProfileInfo from "../components/ProfileInfo";
+import { toast } from "sonner";
+import {
+  getMyProfile,
+  updateMyProfile,
+  type UserProfile,
+} from "@/services/profileApi";
 
 export default function AdminProfilePage() {
   const [profile, setProfile] = useState<UserProfile | null>(null);
@@ -12,78 +15,78 @@ export default function AdminProfilePage() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    let isMounted = true;
+    let ignore = false;
 
-    getMyProfile()
-      .then((data) => {
-        if (isMounted) {
+    const loadProfile = async () => {
+      try {
+        const data = await getMyProfile();
+
+        if (!ignore) {
           setProfile(data);
-          setError("");
         }
-      })
-      .catch(() => {
-        if (isMounted) {
+      } catch {
+        if (!ignore) {
           setError("Failed to load profile information.");
         }
-      })
-      .finally(() => {
-        if (isMounted) {
+      } finally {
+        if (!ignore) {
           setLoading(false);
         }
-      });
+      }
+    };
+
+    loadProfile();
 
     return () => {
-      isMounted = false;
+      ignore = true;
     };
   }, []);
 
-  const handleProfileUpdated = (updatedProfile: {
+  const handleProfileUpdate = async (data: {
     name: string;
-    phoneNumber: string;
     image: string;
-  }) => {
-    setProfile((previousProfile) => {
-      if (!previousProfile) return previousProfile;
+    phoneNumber: string;
+  }): Promise<void> => {
+    setError("");
 
-      return {
-        ...previousProfile,
-        ...updatedProfile,
-      };
-    });
+    try {
+      await updateMyProfile(data);
+
+      const updatedProfile = await getMyProfile();
+      setProfile(updatedProfile);
+
+      toast.success("Profile updated successfully.");
+    } catch (error) {
+      setError("Failed to update profile. Please try again.");
+      throw error;
+    }
   };
 
   if (loading) {
     return <p className="p-6">Loading profile...</p>;
   }
 
-  if (error || !profile) {
-    return <p className="p-6 text-red-600">{error || "Profile not found."}</p>;
+  if (error && !profile) {
+    return <p className="p-6 text-red-600">{error}</p>;
+  }
+
+  if (!profile) {
+    return <p className="p-6 text-red-600">Profile not found.</p>;
   }
 
   return (
     <div className="space-y-6 p-6">
+      <BackToHome />
       <div>
-        <h1 className="text-2xl font-bold text-[#4A382E]">My Profile</h1>
-        <p className="text-sm text-[#6B5B50]">
-          Manage your personal information and account settings.
+        <h1 className="text-2xl font-bold text-foreground">My Profile</h1>
+        <p className="mt-1 text-sm text-[#8A786B]">
+          View and manage your profile information.
         </p>
       </div>
 
-      <ProfileHeader
-        name={profile.name}
-        email={profile.email}
-        image={profile.image}
-      />
+      {error && <p className="text-sm text-red-500">{error}</p>}
 
-      <ProfileForm
-        name={profile.name}
-        email={profile.email}
-        phoneNumber={profile.phoneNumber}
-        image={profile.image}
-        onProfileUpdated={handleProfileUpdated}
-      />
-
-      <ChangePassword />
+      <ProfileInfo profile={profile} onSave={handleProfileUpdate} />
     </div>
   );
 }
