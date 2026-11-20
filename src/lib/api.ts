@@ -1,0 +1,22 @@
+import axios from "axios";
+import { authClient } from "./auth-client";
+
+const api = axios.create({
+  baseURL: "http://localhost:5000",
+});
+
+api.interceptors.request.use(async (config) => {
+  try {
+    const { data } = await authClient.token();
+
+    if (data?.token) {
+      config.headers.Authorization = `Bearer ${data.token}`;
+    }
+  } catch {
+    // Login না থাকলে Public API Request চলবে
+  }
+
+  return config;
+});
+
+export default api;
