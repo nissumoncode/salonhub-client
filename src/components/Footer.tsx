@@ -75,7 +75,7 @@ const Footer = () => {
               <a
                 href="#"
                 aria-label="Facebook"
-                className="flex h-8 w-8 items-center justify-center rounded-full bg-white transition hover:scale-110"
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-card transition hover:scale-110"
               >
                 <SiFacebook color="#1877F2" size={20} />
               </a>
@@ -83,7 +83,7 @@ const Footer = () => {
               <a
                 href="#"
                 aria-label="Instagram"
-                className="flex h-8 w-8 items-center justify-center rounded-full bg-white transition hover:scale-110"
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-card transition hover:scale-110"
               >
                 <SiInstagram color="#E4405F" size={20} />
               </a>
@@ -91,7 +91,7 @@ const Footer = () => {
               <a
                 href="#"
                 aria-label="YouTube"
-                className="flex h-8 w-8 items-center justify-center rounded-full bg-white transition hover:scale-110"
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-card transition hover:scale-110"
               >
                 <SiYoutube color="#FF0000" size={20} />
               </a>

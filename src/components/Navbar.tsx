@@ -1,16 +1,50 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
 import { Button } from "@/components/ui/button";
 
+import { getMyProfile, type UserProfile } from "@/services/profileApi";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { useTheme } from "next-themes";
+import { ChevronDown, SunMoon } from "lucide-react";
+
 const Navbar = () => {
   const router = useRouter();
+  const { theme, setTheme } = useTheme();
   const { data: session, isPending } = authClient.useSession();
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  //const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [profile, setProfile] = useState<UserProfile | null>(null);
+  useEffect(() => {
+    let ignore = false;
 
+    if (!session || isPending) return;
+
+    const loadProfile = async () => {
+      try {
+        const data = await getMyProfile();
+
+        if (!ignore) {
+          setProfile(data);
+        }
+      } catch {
+        // Profile loading failed
+      }
+    };
+
+    loadProfile();
+
+    return () => {
+      ignore = true;
+    };
+  }, [session, isPending]);
   const user = session?.user as
     | {
         name?: string;
@@ -20,7 +54,7 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     await authClient.signOut();
-    setDropdownOpen(false);
+    //setDropdownOpen(false);
     router.push("/");
     router.refresh();
   };
@@ -29,29 +63,31 @@ const Navbar = () => {
     user?.role === "admin" ? "/dashboard/admin" : "/dashboard/customer";
 
   return (
-    <nav className="border-b border-[#E8D8C3] bg-[#F8F1E8]">
+    <nav className="border-b border-border bg-background text-foreground">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <Link href="/" className="text-2xl font-bold text-[#4A382E]">
+        <Link href="/" className="text-2xl font-bold text-foreground">
           SalonHub
         </Link>
 
         <div className="flex items-center gap-6">
-          <Link href="/" className="text-[#4A382E] hover:text-[#B8955A]">
-            Home
-          </Link>
+          <div className="flex items-center gap-6">
+            <Link href="/" className="text-foreground hover:text-primary">
+              Home
+            </Link>
 
-          <Link
-            href="/services"
-            className="text-[#4A382E] hover:text-[#B8955A]"
-          >
-            Browse Services
-          </Link>
+            <Link
+              href="/services"
+              className="text-foreground hover:text-primary"
+            >
+              Browse Services
+            </Link>
+          </div>
 
           {!isPending && (
             <>
               {!session ? (
                 <div className="flex items-center gap-3">
-                  <Link href="/sign-in" className="text-[#4A382E]">
+                  <Link href="/sign-in" className="text-foreground">
                     Sign In
                   </Link>
 
@@ -63,37 +99,74 @@ const Navbar = () => {
                   </Link>
                 </div>
               ) : (
-                <div className="relative">
+                <div className="flex items-center gap-3">
+                  <span className="text-sm font-medium text-foreground">
+                    Welcome, {profile?.name || user?.name || "User"}
+                  </span>
                   <Button
-                    variant="outline"
-                    onClick={() => setDropdownOpen(!dropdownOpen)}
-                    className="border-[#B8955A] text-[#4A382E]"
+                    type="button"
+                    variant="ghost"
+                    size="icon"
+                    onClick={() =>
+                      setTheme(theme === "dark" ? "light" : "dark")
+                    }
+                    aria-label="Toggle theme"
                   >
-                    {user?.name || "My Account"} ▼
+                    <SunMoon className="h-5 w-5" />
                   </Button>
 
-                  {dropdownOpen && (
-                    <div className="absolute right-0 z-50 mt-2 w-48 rounded-md border bg-white p-2 shadow-lg">
-                      <p className="px-3 py-2 text-sm text-gray-500">
-                        {user?.name}
-                      </p>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger
+                      render={
+                        <button
+                          type="button"
+                          className="flex items-center gap-2 rounded-full p-2 hover:bg-[#E8D8C3]"
+                        />
+                      }
+                    >
+                      <Avatar className="h-9 w-9">
+                        <AvatarImage src={profile?.image || ""} />
+                        <AvatarFallback>
+                          {(profile?.name || user?.name || "U")
+                            .charAt(0)
+                            .toUpperCase()}
+                        </AvatarFallback>
+                      </Avatar>
+                      <ChevronDown className="h-4 w-4" />
+                    </DropdownMenuTrigger>
+
+                    <DropdownMenuContent
+                      align="end"
+                      className="w-64 bg-card p-3"
+                    >
+                      <div className="space-y-2 px-2 py-2 text-sm">
+                        <p className="font-semibold text-foreground">
+                          {profile?.name || user?.name}
+                        </p>
+                        <p className="text-gray-500">{profile?.email}</p>
+                        <p className="text-gray-500">
+                          {profile?.phoneNumber || "No phone number"}
+                        </p>
+                      </div>
+
+                      <div className="my-2 border-t" />
 
                       <Link
                         href={dashboardLink}
-                        onClick={() => setDropdownOpen(false)}
-                        className="block rounded px-3 py-2 text-sm hover:bg-[#F8F1E8]"
+                        className="block rounded px-2 py-2 text-sm hover:bg-[#F8F1E8]"
                       >
                         Dashboard
                       </Link>
 
-                      <button
+                      <Button
+                        variant="ghost"
                         onClick={handleLogout}
-                        className="w-full rounded px-3 py-2 text-left text-sm text-red-600 hover:bg-red-50"
+                        className="w-full justify-start px-2 text-sm text-red-600 hover:bg-red-50"
                       >
                         Logout
-                      </button>
-                    </div>
-                  )}
+                      </Button>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
                 </div>
               )}
             </>

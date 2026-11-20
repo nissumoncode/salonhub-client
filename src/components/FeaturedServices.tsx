@@ -41,10 +41,10 @@ const FeaturedServices = () => {
   }
 
   return (
-    <section className="bg-[#F8F1E8] px-6 py-16">
+    <section className="bg-background px-6 py-16">
       <div className="mx-auto max-w-7xl">
         <div className="mb-10 text-center">
-          <h2 className="text-3xl font-bold text-[#4A382E] md:text-4xl">
+          <h2 className="text-3xl font-bold text-foreground md:text-4xl">
             Our Featured Services
           </h2>
 
@@ -57,7 +57,7 @@ const FeaturedServices = () => {
           {services.map((service) => (
             <div
               key={service._id}
-              className="overflow-hidden rounded-xl border border-[#E8D8C3] bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+              className="overflow-hidden rounded-xl border border-[#E8D8C3] bg-card shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
             >
               <div className="relative h-52 w-full">
                 <Image
@@ -74,7 +74,7 @@ const FeaturedServices = () => {
                   {service.category}
                 </span>
 
-                <h3 className="mt-2 text-xl font-bold text-[#4A382E]">
+                <h3 className="mt-2 text-xl font-bold text-foreground">
                   {service.serviceName}
                 </h3>
 
@@ -84,7 +84,7 @@ const FeaturedServices = () => {
 
                 <div className="mt-5 flex items-center justify-between border-t border-[#E8D8C3] pt-4">
                   <div>
-                    <p className="text-lg font-bold text-[#4A382E]">
+                    <p className="text-lg font-bold text-foreground">
                       ${service.price}
                     </p>
                     <p className="text-sm text-[#6B5B50]">

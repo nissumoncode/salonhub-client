@@ -20,10 +20,10 @@ const benefits = [
 
 const WhyChooseUs = () => {
   return (
-    <section className="bg-[#F8F1E8] px-6 py-16">
+    <section className="bg-background px-6 py-16">
       <div className="mx-auto max-w-7xl">
         <div className="mb-10 text-center">
-          <h2 className="text-3xl font-bold text-[#4A382E] md:text-4xl">
+          <h2 className="text-3xl font-bold text-foreground md:text-4xl">
             Why Choose SalonHub?
           </h2>
           <p className="mt-3 text-[#6B5B50]">
@@ -35,11 +35,11 @@ const WhyChooseUs = () => {
           {benefits.map((benefit) => (
             <div
               key={benefit.title}
-              className="rounded-xl border border-[#E8D8C3] bg-white p-8 text-center shadow-sm"
+              className="rounded-xl border border-[#E8D8C3] bg-card p-8 text-center shadow-sm"
             >
               <span className="text-4xl">{benefit.icon}</span>
 
-              <h3 className="mt-4 text-xl font-bold text-[#4A382E]">
+              <h3 className="mt-4 text-xl font-bold text-foreground">
                 {benefit.title}
               </h3>
 

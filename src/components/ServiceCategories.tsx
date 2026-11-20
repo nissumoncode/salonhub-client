@@ -40,10 +40,10 @@ const categories = [
 
 const ServiceCategories = () => {
   return (
-    <section className="bg-white px-6 py-16">
+    <section className="bg-card px-6 py-16">
       <div className="mx-auto max-w-7xl">
         <div className="mb-10 text-center">
-          <h2 className="text-3xl font-bold text-[#4A382E] md:text-4xl">
+          <h2 className="text-3xl font-bold text-foreground md:text-4xl">
             Explore Our Categories
           </h2>
           <p className="mt-3 text-[#6B5B50]">
@@ -56,11 +56,11 @@ const ServiceCategories = () => {
             <Link
               key={category.name}
               href={`/services?category=${encodeURIComponent(category.name)}`}
-              className="rounded-xl border border-[#E8D8C3] bg-[#F8F1E8] p-6 text-center transition hover:-translate-y-1 hover:shadow-lg"
+              className="rounded-xl border border-[#E8D8C3] bg-background p-6 text-center transition hover:-translate-y-1 hover:shadow-lg"
             >
               <span className="text-4xl">{category.icon}</span>
 
-              <h3 className="mt-4 text-lg font-bold text-[#4A382E]">
+              <h3 className="mt-4 text-lg font-bold text-foreground">
                 {category.name}
               </h3>
 

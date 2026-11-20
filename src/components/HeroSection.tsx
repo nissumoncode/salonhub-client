@@ -96,7 +96,7 @@ const HeroSection = () => {
 
       <button
         onClick={prevSlide}
-        className="absolute left-5 top-1/2 -translate-y-1/2 rounded-full bg-white/80 p-3 text-[#4A382E]"
+        className="absolute left-5 top-1/2 -translate-y-1/2 rounded-full bg-card/80 p-3 text-foreground"
         aria-label="Previous slide"
       >
         <ChevronLeft />
@@ -104,7 +104,7 @@ const HeroSection = () => {
 
       <button
         onClick={nextSlide}
-        className="absolute right-5 top-1/2 -translate-y-1/2 rounded-full bg-white/80 p-3 text-[#4A382E]"
+        className="absolute right-5 top-1/2 -translate-y-1/2 rounded-full bg-card/80 p-3 text-foreground"
         aria-label="Next slide"
       >
         <ChevronRight />
