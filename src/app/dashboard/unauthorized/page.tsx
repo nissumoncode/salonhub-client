@@ -15,12 +15,12 @@ const UnauthorizedPage = () => {
   const router = useRouter();
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-[#F8F1E8] p-4">
+    <main className="flex min-h-screen items-center justify-center bg-background p-4">
       <Card className="w-full max-w-md border-[#E8D8C3] text-center shadow-sm">
         <CardHeader>
           <div className="mb-3 text-5xl">🛡️</div>
 
-          <CardTitle className="text-3xl font-bold text-[#4A382E]">
+          <CardTitle className="text-3xl font-bold text-foreground">
             Access Denied
           </CardTitle>
 

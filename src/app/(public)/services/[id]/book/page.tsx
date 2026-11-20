@@ -90,6 +90,7 @@ const BookingPage = () => {
       });
 
       toast.success(response.data.message);
+      router.push("/dashboard/customer/appointments");
 
       setDate("");
       setTimeSlot("");
@@ -111,7 +112,7 @@ const BookingPage = () => {
 
   if (isChecking) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-[#F8F1E8]">
+      <div className="flex min-h-screen items-center justify-center bg-background">
         <p className="text-[#6B5B50]">Checking access...</p>
       </div>
     );
@@ -120,14 +121,14 @@ const BookingPage = () => {
   if (!isAuthorized) return null;
 
   return (
-    <main className="min-h-screen bg-[#F8F1E8] px-4 py-12">
-      <div className="mx-auto max-w-xl rounded-2xl bg-white p-6 shadow-sm md:p-8">
+    <main className="min-h-screen bg-background px-4 py-12">
+      <div className="mx-auto max-w-xl rounded-2xl bg-card p-6 shadow-sm md:p-8">
         <div className="mb-8 text-center">
           <p className="font-medium uppercase tracking-widest text-[#B8955A]">
             SalonBook
           </p>
 
-          <h1 className="mt-2 text-3xl font-bold text-[#4A382E]">
+          <h1 className="mt-2 text-3xl font-bold text-foreground">
             Book Your Appointment
           </h1>
 
@@ -138,7 +139,7 @@ const BookingPage = () => {
 
         <form onSubmit={handleBooking} className="space-y-5">
           <div>
-            <label className="mb-2 block font-medium text-[#4A382E]">
+            <label className="mb-2 block font-medium text-foreground">
               Appointment Date
             </label>
 
@@ -153,7 +154,7 @@ const BookingPage = () => {
           </div>
 
           <div>
-            <label className="mb-2 block font-medium text-[#4A382E]">
+            <label className="mb-2 block font-medium text-foreground">
               Available Time Slot
             </label>
 
@@ -174,7 +175,7 @@ const BookingPage = () => {
           </div>
 
           <div>
-            <label className="mb-2 block font-medium text-[#4A382E]">
+            <label className="mb-2 block font-medium text-foreground">
               Additional Message (Optional)
             </label>
 

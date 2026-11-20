@@ -46,7 +46,7 @@ const ServiceDetailsPage = () => {
 
   if (loading) {
     return (
-      <div className="flex min-h-[60vh] items-center justify-center bg-[#F8F1E8]">
+      <div className="flex min-h-[60vh] items-center justify-center bg-background">
         <p className="text-[#6B5B50]">Loading service details...</p>
       </div>
     );
@@ -55,8 +55,8 @@ const ServiceDetailsPage = () => {
   if (!service) return null;
 
   return (
-    <main className="min-h-screen bg-[#F8F1E8] px-4 py-12 md:px-8">
-      <div className="mx-auto grid max-w-6xl gap-10 overflow-hidden rounded-2xl bg-white p-6 shadow-sm md:grid-cols-2 md:p-10">
+    <main className="min-h-screen bg-background px-4 py-12 md:px-8">
+      <div className="mx-auto grid max-w-6xl gap-10 overflow-hidden rounded-2xl bg-card p-6 shadow-sm md:grid-cols-2 md:p-10">
         <div className="relative min-h-[300px] overflow-hidden rounded-xl bg-[#E8D8C3]">
           {service.image && (
             <Image
@@ -72,7 +72,7 @@ const ServiceDetailsPage = () => {
         <div className="flex flex-col justify-center">
           <p className="mb-3 font-medium text-[#B8955A]">{service.category}</p>
 
-          <h1 className="text-3xl font-bold text-[#4A382E] md:text-4xl">
+          <h1 className="text-3xl font-bold text-foreground md:text-4xl">
             {service.serviceName}
           </h1>
 
@@ -81,14 +81,14 @@ const ServiceDetailsPage = () => {
           <div className="mt-8 flex gap-10">
             <div>
               <p className="text-sm text-[#6B5B50]">Price</p>
-              <p className="mt-1 text-2xl font-bold text-[#4A382E]">
+              <p className="mt-1 text-2xl font-bold text-foreground">
                 ৳{service.price}
               </p>
             </div>
 
             <div>
               <p className="text-sm text-[#6B5B50]">Duration</p>
-              <p className="mt-1 text-2xl font-bold text-[#4A382E]">
+              <p className="mt-1 text-2xl font-bold text-foreground">
                 {service.duration} min
               </p>
             </div>

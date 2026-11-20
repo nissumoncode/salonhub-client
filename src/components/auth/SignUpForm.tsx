@@ -81,10 +81,10 @@ const SignUpForm = () => {
   };
 
   return (
-    <div className="w-full max-w-6xl overflow-hidden rounded-2xl bg-white shadow-xl grid md:grid-cols-2">
+    <div className="w-full max-w-6xl overflow-hidden rounded-2xl bg-card shadow-xl grid md:grid-cols-2">
       {/* Branding */}
-      <section className="hidden md:flex flex-col justify-between bg-[#F8F1E8] p-10">
-        <Link href="/" className="text-3xl font-bold text-[#4A382E]">
+      <section className="hidden md:flex flex-col justify-between bg-background p-10">
+        <Link href="/" className="text-3xl font-bold text-foreground">
           Salon<span className="text-[#B8955A]">Hub</span>
         </Link>
 
@@ -100,7 +100,7 @@ const SignUpForm = () => {
             />
           </div>
 
-          <h2 className="mt-8 text-3xl font-bold text-[#4A382E]">
+          <h2 className="mt-8 text-3xl font-bold text-foreground">
             Beauty begins with you.
           </h2>
 
@@ -120,12 +120,12 @@ const SignUpForm = () => {
         <div className="mb-7">
           <Link
             href="/"
-            className="text-2xl font-bold text-[#4A382E] md:hidden"
+            className="text-2xl font-bold text-foreground md:hidden"
           >
             Salon<span className="text-[#B8955A]">Hub</span>
           </Link>
 
-          <h1 className="mt-5 text-3xl font-bold text-[#4A382E]">
+          <h1 className="mt-5 text-3xl font-bold text-foreground">
             Create Account
           </h1>
 
@@ -136,7 +136,7 @@ const SignUpForm = () => {
 
         {/* Profile Photo */}
         <div className="mb-6 flex items-center gap-3">
-          <div className="relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-full bg-[#F8F1E8] text-[#B8955A]">
+          <div className="relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-full bg-background text-[#B8955A]">
             {profileImage ? (
               <Image
                 src={profileImage}
@@ -172,7 +172,7 @@ const SignUpForm = () => {
         </div>
 
         <div className="mt-3">
-          <label className="mb-2 block text-sm font-medium text-[#4A382E]">
+          <label className="mb-2 block text-sm font-medium text-foreground">
             Or Enter Image URL
           </label>
 
@@ -186,7 +186,7 @@ const SignUpForm = () => {
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Full Name */}
           <div>
-            <label className="mb-2 block text-sm font-medium text-[#4A382E]">
+            <label className="mb-2 block text-sm font-medium text-foreground">
               Full Name
             </label>
             <div className="relative">
@@ -203,7 +203,7 @@ const SignUpForm = () => {
 
           {/* Email */}
           <div>
-            <label className="mb-2 block text-sm font-medium text-[#4A382E]">
+            <label className="mb-2 block text-sm font-medium text-foreground">
               Email Address
             </label>
             <div className="relative">
@@ -220,7 +220,7 @@ const SignUpForm = () => {
 
           {/* Password */}
           <div>
-            <label className="mb-2 block text-sm font-medium text-[#4A382E]">
+            <label className="mb-2 block text-sm font-medium text-foreground">
               Password
             </label>
             <div className="relative">
@@ -245,7 +245,7 @@ const SignUpForm = () => {
 
           {/* Confirm Password */}
           <div>
-            <label className="mb-2 block text-sm font-medium text-[#4A382E]">
+            <label className="mb-2 block text-sm font-medium text-foreground">
               Confirm Password
             </label>
             <div className="relative">
@@ -278,7 +278,7 @@ const SignUpForm = () => {
           <Button
             type="button"
             variant="outline"
-            className="h-11 w-full rounded-lg border-[#E8D8C3] text-[#4A382E]"
+            className="h-11 w-full rounded-lg border-[#E8D8C3] text-foreground"
           >
             <FcGoogle size={20} />
             Continue with Google

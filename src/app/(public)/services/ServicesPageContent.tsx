@@ -58,14 +58,14 @@ const ServicesPageContent = () => {
   }, [services, search, category, sort]);
 
   return (
-    <main className="min-h-screen bg-[#F8F1E8] px-4 py-12 md:px-8">
+    <main className="min-h-screen bg-background px-4 py-12 md:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="mb-10 text-center">
           <p className="mb-2 font-medium uppercase tracking-[0.2em] text-[#B8955A]">
             Discover Our Services
           </p>
 
-          <h1 className="text-3xl font-bold text-[#4A382E] md:text-5xl">
+          <h1 className="text-3xl font-bold text-foreground md:text-5xl">
             Explore Salon Services
           </h1>
 
@@ -76,7 +76,7 @@ const ServicesPageContent = () => {
         </div>
 
         {/* Search and Filter */}
-        <div className="mb-10 grid gap-4 rounded-xl border border-[#E8D8C3] bg-white p-5 md:grid-cols-3">
+        <div className="mb-10 grid gap-4 rounded-xl border border-[#E8D8C3] bg-card p-5 md:grid-cols-3">
           <input
             type="text"
             placeholder="Search services..."
@@ -137,7 +137,7 @@ const ServicesPageContent = () => {
                 {filteredServices.map((service) => (
                   <div
                     key={service._id}
-                    className="overflow-hidden rounded-xl border border-[#E8D8C3] bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+                    className="overflow-hidden rounded-xl border border-[#E8D8C3] bg-card shadow-sm transition hover:-translate-y-1 hover:shadow-md"
                   >
                     <div className="relative h-56 w-full bg-[#E8D8C3]">
                       {service.image && (
@@ -156,7 +156,7 @@ const ServicesPageContent = () => {
                         {service.category}
                       </p>
 
-                      <h2 className="text-xl font-semibold text-[#4A382E]">
+                      <h2 className="text-xl font-semibold text-foreground">
                         {service.serviceName}
                       </h2>
 
@@ -165,7 +165,7 @@ const ServicesPageContent = () => {
                       </p>
 
                       <div className="mt-4 flex items-center justify-between text-sm">
-                        <span className="font-semibold text-[#4A382E]">
+                        <span className="font-semibold text-foreground">
                           ৳{service.price}
                         </span>
 

@@ -22,3 +22,12 @@ export const updateMyProfile = async (data: {
   const response = await api.patch("/profile/me", data);
   return response.data;
 };
+// Upload profile image to ImgBB
+export const uploadProfileImage = async (image: File): Promise<string> => {
+  const formData = new FormData();
+  formData.append("image", image);
+
+  const response = await api.post("/profile/upload-image", formData);
+
+  return response.data.imageUrl;
+};
