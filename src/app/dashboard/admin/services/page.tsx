@@ -1,0 +1,178 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { getServices } from "@/services/serviceApi";
+import type { Service } from "@/types/service";
+import Image from "next/image";
+
+import AddService from "../../components/AddService";
+import EditService from "../../components/EditService";
+import DeleteService from "../../components/DeleteService";
+
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+
+const ManageServicesPage = () => {
+  const [services, setServices] = useState<Service[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  const fetchServices = async () => {
+    try {
+      const data = await getServices();
+      setServices(data);
+      setError("");
+    } catch {
+      setError("Failed to load services.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    let ignore = false;
+
+    const loadServices = async () => {
+      try {
+        const data = await getServices();
+
+        if (!ignore) {
+          setServices(data);
+          setError("");
+        }
+      } catch {
+        if (!ignore) {
+          setError("Failed to load services.");
+        }
+      } finally {
+        if (!ignore) {
+          setLoading(false);
+        }
+      }
+    };
+
+    loadServices();
+
+    return () => {
+      ignore = true;
+    };
+  }, []);
+  if (loading) {
+    return <p className="p-6">Loading services...</p>;
+  }
+
+  if (error) {
+    return <p className="p-6 text-red-500">{error}</p>;
+  }
+
+  return (
+    <div className="space-y-6 p-6">
+      <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
+        <div>
+          <h1 className="text-2xl font-bold text-[#4A382E]">Manage Services</h1>
+          <p className="mt-1 text-gray-500">
+            View and manage all salon services.
+          </p>
+        </div>
+
+        <AddService onAdded={fetchServices} />
+      </div>
+
+      {services.length === 0 ? (
+        <Card>
+          <CardContent className="py-6 text-gray-500">
+            No services found.
+          </CardContent>
+        </Card>
+      ) : (
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-[#4A382E]">All Services</CardTitle>
+          </CardHeader>
+
+          <CardContent>
+            <div className="overflow-x-auto">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Image</TableHead>
+                    <TableHead>Service Name</TableHead>
+                    <TableHead>Category</TableHead>
+                    <TableHead>Price</TableHead>
+                    <TableHead>Duration</TableHead>
+                    <TableHead>Status</TableHead>
+                    <TableHead>Actions</TableHead>
+                  </TableRow>
+                </TableHeader>
+
+                <TableBody>
+                  {services.map((service) => (
+                    <TableRow key={service._id}>
+                      <TableCell>
+                        {service.image ? (
+                          <Image
+                            src={service.image}
+                            alt={service.serviceName}
+                            width={48}
+                            height={48}
+                            className="h-12 w-12 rounded-md object-cover"
+                          />
+                        ) : (
+                          <span className="text-gray-400">No Image</span>
+                        )}
+                      </TableCell>
+
+                      <TableCell className="font-medium">
+                        {service.serviceName}
+                      </TableCell>
+
+                      <TableCell>{service.category}</TableCell>
+                      <TableCell>৳{service.price}</TableCell>
+                      <TableCell>{service.duration} min</TableCell>
+
+                      <TableCell>
+                        <span
+                          className={
+                            service.status === "active"
+                              ? "rounded-full bg-green-100 px-3 py-1 text-sm text-green-700"
+                              : "rounded-full bg-gray-100 px-3 py-1 text-sm text-gray-600"
+                          }
+                        >
+                          {service.status}
+                        </span>
+                      </TableCell>
+
+                      <TableCell>
+                        <div className="flex items-center gap-2">
+                          <EditService
+                            service={service}
+                            onUpdated={fetchServices}
+                          />
+
+                          <DeleteService
+                            serviceId={service._id}
+                            onDeleted={fetchServices}
+                          />
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+    </div>
+  );
+};
+
+export default ManageServicesPage;
