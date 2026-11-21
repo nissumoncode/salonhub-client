@@ -80,6 +80,18 @@ const SignUpForm = () => {
     router.push(`/sign-in?callbackURL=${encodeURIComponent(callbackURL)}`);
   };
 
+  const handleGoogleSignUp = async () => {
+    const redirectURL = `${window.location.origin}/auth/callback?callbackURL=${encodeURIComponent(callbackURL)}`;
+
+    const { error } = await authClient.signIn.social({
+      provider: "google",
+      callbackURL: redirectURL,
+    });
+
+    if (error) {
+      toast.error(error.message || "Google sign up failed.");
+    }
+  };
   return (
     <div className="w-full max-w-6xl overflow-hidden rounded-2xl bg-card shadow-xl grid md:grid-cols-2">
       {/* Branding */}
@@ -278,6 +290,7 @@ const SignUpForm = () => {
           <Button
             type="button"
             variant="outline"
+            onClick={handleGoogleSignUp}
             className="h-11 w-full rounded-lg border-border text-foreground"
           >
             <FcGoogle size={20} />
