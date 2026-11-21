@@ -32,16 +32,16 @@ const Footer = () => {
             <h3 className="mb-4 text-lg font-semibold">Quick Links</h3>
 
             <div className="flex flex-col gap-3 text-sm text-gray-300">
-              <Link href="/" className="hover:text-[#B8955A]">
+              <Link href="/" className="hover:text-primary-hover">
                 Home
               </Link>
-              <Link href="/services" className="hover:text-[#B8955A]">
+              <Link href="/services" className="hover:text-primary-hover">
                 Browse Services
               </Link>
-              <Link href="/sign-in" className="hover:text-[#B8955A]">
+              <Link href="/sign-in" className="hover:text-primary-hover">
                 Sign In
               </Link>
-              <Link href="/sign-up" className="hover:text-[#B8955A]">
+              <Link href="/sign-up" className="hover:text-primary-hover">
                 Sign Up
               </Link>
             </div>
@@ -75,7 +75,7 @@ const Footer = () => {
               <a
                 href="#"
                 aria-label="Facebook"
-                className="flex h-8 w-8 items-center justify-center rounded-full bg-card transition hover:scale-110"
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 transition hover:scale-110 hover:bg-white/20"
               >
                 <SiFacebook color="#1877F2" size={20} />
               </a>
@@ -83,7 +83,7 @@ const Footer = () => {
               <a
                 href="#"
                 aria-label="Instagram"
-                className="flex h-8 w-8 items-center justify-center rounded-full bg-card transition hover:scale-110"
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 transition hover:scale-110 hover:bg-white/20"
               >
                 <SiInstagram color="#E4405F" size={20} />
               </a>
@@ -91,7 +91,7 @@ const Footer = () => {
               <a
                 href="#"
                 aria-label="YouTube"
-                className="flex h-8 w-8 items-center justify-center rounded-full bg-card transition hover:scale-110"
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 transition hover:scale-110 hover:bg-white/20"
               >
                 <SiYoutube color="#FF0000" size={20} />
               </a>

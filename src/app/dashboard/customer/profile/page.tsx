@@ -67,18 +67,18 @@ const CustomerProfilePage = () => {
       <BackToHome />
       <div>
         <h1 className="text-2xl font-bold text-foreground">My Profile</h1>
-        <p className="mt-1 text-sm text-[#8A786B]">
+        <p className="mt-1 text-sm text-muted-foreground">
           View and manage your profile information.
         </p>
       </div>
 
       {loading && (
-        <p className="py-6 text-center text-sm text-gray-500">
+        <p className="py-6 text-center text-sm text-muted-foreground">
           Loading profile...
         </p>
       )}
 
-      {error && <p className="text-sm text-red-500">{error}</p>}
+      {error && <p className="text-sm text-destructive">{error}</p>}
 
       {!loading && !error && profile && (
         <ProfileInfo profile={profile} onSave={handleProfileUpdate} />

@@ -103,7 +103,7 @@ const ProfileForm = ({
   };
 
   return (
-    <Card className="border-[#E8DCCB]">
+    <Card className="border-border">
       <CardHeader>
         <CardTitle className="text-foreground">Personal Information</CardTitle>
         <CardDescription>Update your profile information.</CardDescription>
@@ -161,15 +161,15 @@ const ProfileForm = ({
               Maximum image size: 5 MB.
             </p>
             {selectedImage && (
-              <p className="text-sm text-[#6B5B50]">
+              <p className="text-sm text-muted-foreground">
                 Selected: {selectedImage.name}
               </p>
             )}
           </div>
 
-          {message && <p className="text-sm text-green-600">{message}</p>}
+          {message && <p className="text-sm text-green-700 dark:text-green-400">{message}</p>}
 
-          {error && <p className="text-sm text-red-600">{error}</p>}
+          {error && <p className="text-sm text-destructive">{error}</p>}
 
           <Button
             type="submit"

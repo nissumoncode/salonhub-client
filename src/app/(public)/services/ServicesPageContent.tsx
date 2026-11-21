@@ -61,7 +61,7 @@ const ServicesPageContent = () => {
     <main className="min-h-screen bg-background px-4 py-12 md:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="mb-10 text-center">
-          <p className="mb-2 font-medium uppercase tracking-[0.2em] text-[#B8955A]">
+          <p className="mb-2 font-medium uppercase tracking-[0.2em] text-gold-text">
             Discover Our Services
           </p>
 
@@ -69,26 +69,26 @@ const ServicesPageContent = () => {
             Explore Salon Services
           </h1>
 
-          <p className="mx-auto mt-4 max-w-2xl text-[#6B5B50]">
+          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
             Find the perfect salon service to refresh your look and feel your
             best.
           </p>
         </div>
 
         {/* Search and Filter */}
-        <div className="mb-10 grid gap-4 rounded-xl border border-[#E8D8C3] bg-card p-5 md:grid-cols-3">
+        <div className="mb-10 grid gap-4 rounded-xl border border-border bg-card p-5 md:grid-cols-3">
           <input
             type="text"
             placeholder="Search services..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="rounded-lg border border-[#E8D8C3] px-4 py-3 outline-none focus:border-[#B8955A]"
+            className="rounded-lg border border-border bg-background px-4 py-3 text-foreground outline-none focus:border-primary"
           />
 
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="rounded-lg border border-[#E8D8C3] px-4 py-3 outline-none focus:border-[#B8955A]"
+            className="rounded-lg border border-border bg-background px-4 py-3 text-foreground outline-none focus:border-primary"
           >
             <option value="all">All Categories</option>
             {categories.map((item) => (
@@ -101,7 +101,7 @@ const ServicesPageContent = () => {
           <select
             value={sort}
             onChange={(e) => setSort(e.target.value)}
-            className="rounded-lg border border-[#E8D8C3] px-4 py-3 outline-none focus:border-[#B8955A]"
+            className="rounded-lg border border-border bg-background px-4 py-3 text-foreground outline-none focus:border-primary"
           >
             <option value="default">Default Sorting</option>
             <option value="low">Price: Low to High</option>
@@ -111,25 +111,25 @@ const ServicesPageContent = () => {
 
         {/* Loading */}
         {loading && (
-          <p className="py-16 text-center text-[#6B5B50]">
+          <p className="py-16 text-center text-muted-foreground">
             Loading services...
           </p>
         )}
 
         {/* Error */}
         {!loading && error && (
-          <p className="py-16 text-center text-red-600">{error}</p>
+          <p className="py-16 text-center text-destructive">{error}</p>
         )}
 
         {/* Services */}
         {!loading && !error && (
           <>
-            <p className="mb-5 text-sm text-[#6B5B50]">
+            <p className="mb-5 text-sm text-muted-foreground">
               Showing {filteredServices.length} services
             </p>
 
             {filteredServices.length === 0 ? (
-              <p className="py-16 text-center text-[#6B5B50]">
+              <p className="py-16 text-center text-muted-foreground">
                 No services found.
               </p>
             ) : (
@@ -137,9 +137,9 @@ const ServicesPageContent = () => {
                 {filteredServices.map((service) => (
                   <div
                     key={service._id}
-                    className="overflow-hidden rounded-xl border border-[#E8D8C3] bg-card shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+                    className="overflow-hidden rounded-xl border border-border bg-card shadow-sm transition hover:-translate-y-1 hover:shadow-md"
                   >
-                    <div className="relative h-56 w-full bg-[#E8D8C3]">
+                    <div className="relative h-56 w-full bg-secondary">
                       {service.image && (
                         <Image
                           src={service.image}
@@ -152,7 +152,7 @@ const ServicesPageContent = () => {
                     </div>
 
                     <div className="p-5">
-                      <p className="mb-2 text-sm font-medium text-[#B8955A]">
+                      <p className="mb-2 text-sm font-medium text-gold-text">
                         {service.category}
                       </p>
 
@@ -160,7 +160,7 @@ const ServicesPageContent = () => {
                         {service.serviceName}
                       </h2>
 
-                      <p className="mt-2 line-clamp-2 text-sm text-[#6B5B50]">
+                      <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">
                         {service.description}
                       </p>
 
@@ -169,7 +169,7 @@ const ServicesPageContent = () => {
                           ৳{service.price}
                         </span>
 
-                        <span className="text-[#6B5B50]">
+                        <span className="text-muted-foreground">
                           {service.duration} min
                         </span>
                       </div>

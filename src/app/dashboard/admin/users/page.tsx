@@ -72,7 +72,7 @@ const ManageUsersPage = () => {
   return (
     <div className="space-y-6 p-6">
       <BackToHome />
-      <Card className="border-[#E8DCCB]">
+      <Card className="border-border">
         <CardHeader>
           <CardTitle className="text-2xl text-foreground">
             Manage Users
@@ -84,14 +84,14 @@ const ManageUsersPage = () => {
 
         <CardContent>
           {loading ? (
-            <p className="py-6 text-center text-[#6B5B50]">
+            <p className="py-6 text-center text-muted-foreground">
               Loading customers...
             </p>
           ) : error && customers.length === 0 ? (
-            <p className="py-6 text-center text-red-600">{error}</p>
+            <p className="py-6 text-center text-destructive">{error}</p>
           ) : (
             <>
-              {error && <p className="mb-4 text-sm text-red-600">{error}</p>}
+              {error && <p className="mb-4 text-sm text-destructive">{error}</p>}
 
               <UserTable
                 customers={customers}

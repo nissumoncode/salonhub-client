@@ -70,7 +70,7 @@ const CustomerAppointmentsPage = () => {
       <div>
         <h1 className="text-2xl font-bold text-foreground">My Appointments</h1>
 
-        <p className="text-[#6B5B50]">
+        <p className="text-muted-foreground">
           View and manage your appointment requests.
         </p>
       </div>

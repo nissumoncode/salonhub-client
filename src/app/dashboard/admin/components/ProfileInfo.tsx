@@ -31,7 +31,7 @@ const ProfileInfo = ({ profile, onSave }: ProfileInfoProps) => {
 
   return (
     <>
-      <Card className="border-[#E8DCCB] shadow-sm">
+      <Card className="border-border shadow-sm">
         <CardHeader>
           <div className="flex items-center justify-between">
             <CardTitle className="text-lg text-foreground">
@@ -45,28 +45,28 @@ const ProfileInfo = ({ profile, onSave }: ProfileInfoProps) => {
           <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
             <Avatar className="h-24 w-24">
               <AvatarImage src={profile.image || ""} alt={profile.name} />
-              <AvatarFallback className="bg-[#F5EFE8] text-2xl text-foreground">
+              <AvatarFallback className="bg-secondary text-2xl text-secondary-foreground">
                 {profile.name?.charAt(0)?.toUpperCase() || "U"}
               </AvatarFallback>
             </Avatar>
 
             <div className="grid flex-1 gap-5 sm:grid-cols-2">
               <div>
-                <p className="text-sm text-[#8A786B]">Full Name</p>
+                <p className="text-sm text-muted-foreground">Full Name</p>
                 <p className="mt-1 font-medium text-foreground">
                   {profile.name}
                 </p>
               </div>
 
               <div>
-                <p className="text-sm text-[#8A786B]">Email Address</p>
+                <p className="text-sm text-muted-foreground">Email Address</p>
                 <p className="mt-1 break-all font-medium text-foreground">
                   {profile.email}
                 </p>
               </div>
 
               <div>
-                <p className="text-sm text-[#8A786B]">Phone Number</p>
+                <p className="text-sm text-muted-foreground">Phone Number</p>
                 <p className="mt-1 font-medium text-foreground">
                   {profile.phoneNumber || "Not provided"}
                 </p>
@@ -74,7 +74,7 @@ const ProfileInfo = ({ profile, onSave }: ProfileInfoProps) => {
             </div>
           </div>
 
-          <div className="mt-6 flex justify-end border-t border-[#F0E7DD] pt-4">
+          <div className="mt-6 flex justify-end border-t border-border pt-4">
             <Button onClick={() => setEditOpen(true)}>Edit Profile</Button>
           </div>
         </CardContent>

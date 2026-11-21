@@ -48,19 +48,19 @@ const OverviewStats = () => {
   ];
 
   if (loading) {
-    return <p className="text-[#6B5B50]">Loading statistics...</p>;
+    return <p className="text-muted-foreground">Loading statistics...</p>;
   }
 
   if (error) {
-    return <p className="text-red-600">{error}</p>;
+    return <p className="text-destructive">{error}</p>;
   }
 
   return (
     <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
       {statItems.map((stat) => (
-        <Card key={stat.title} className="border-[#E8DCCB]">
+        <Card key={stat.title} className="border-border">
           <CardHeader>
-            <CardTitle className="text-sm font-medium text-[#6B5B50]">
+            <CardTitle className="text-sm font-medium text-muted-foreground">
               {stat.title}
             </CardTitle>
           </CardHeader>
@@ -73,9 +73,9 @@ const OverviewStats = () => {
         </Card>
       ))}
 
-      <Card className="border-[#E8DCCB]">
+      <Card className="border-border">
         <CardHeader>
-          <CardTitle className="text-sm font-medium text-[#6B5B50]">
+          <CardTitle className="text-sm font-medium text-muted-foreground">
             Successful Payments
           </CardTitle>
         </CardHeader>

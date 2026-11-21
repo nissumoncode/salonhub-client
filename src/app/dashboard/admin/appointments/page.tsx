@@ -78,13 +78,13 @@ const ManageAppointmentsPage = () => {
         <h1 className="text-2xl font-bold text-foreground">
           Manage Appointments
         </h1>
-        <p className="mt-1 text-gray-500">
+        <p className="mt-1 text-muted-foreground">
           View and manage customer appointment requests.
         </p>
       </div>
 
       {error && (
-        <p className="rounded-md bg-red-50 p-3 text-sm text-red-600">{error}</p>
+        <p className="rounded-md border border-destructive/30 bg-destructive/10 p-3 text-sm text-destructive">{error}</p>
       )}
 
       <AppointmentForm

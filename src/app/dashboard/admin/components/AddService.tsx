@@ -220,13 +220,13 @@ const AddService = ({ onAdded }: AddServiceProps) => {
           </div>
         </div>
 
-        {saveError && <p className="text-sm text-red-500">{saveError}</p>}
+        {saveError && <p className="text-sm text-destructive">{saveError}</p>}
 
         <Button
           type="button"
           onClick={handleSaveService}
           disabled={saving}
-          className="bg-[#4A382E] hover:bg-[#604838]"
+          className="bg-[#4A382E] text-white hover:bg-[#604838]"
         >
           {saving ? "Saving..." : "Save Service"}
         </Button>

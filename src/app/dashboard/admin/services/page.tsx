@@ -70,7 +70,7 @@ const ManageServicesPage = () => {
   }
 
   if (error) {
-    return <p className="p-6 text-red-500">{error}</p>;
+    return <p className="p-6 text-destructive">{error}</p>;
   }
 
   return (
@@ -81,7 +81,7 @@ const ManageServicesPage = () => {
           <h1 className="text-2xl font-bold text-foreground">
             Manage Services
           </h1>
-          <p className="mt-1 text-gray-500">
+          <p className="mt-1 text-muted-foreground">
             View and manage all salon services.
           </p>
         </div>
@@ -91,7 +91,7 @@ const ManageServicesPage = () => {
 
       {services.length === 0 ? (
         <Card>
-          <CardContent className="py-6 text-gray-500">
+          <CardContent className="py-6 text-muted-foreground">
             No services found.
           </CardContent>
         </Card>
@@ -129,7 +129,7 @@ const ManageServicesPage = () => {
                             className="h-12 w-12 rounded-md object-cover"
                           />
                         ) : (
-                          <span className="text-gray-400">No Image</span>
+                          <span className="text-muted-foreground">No Image</span>
                         )}
                       </TableCell>
 
@@ -145,8 +145,8 @@ const ManageServicesPage = () => {
                         <span
                           className={
                             service.status === "active"
-                              ? "rounded-full bg-green-100 px-3 py-1 text-sm text-green-700"
-                              : "rounded-full bg-gray-100 px-3 py-1 text-sm text-gray-600"
+                              ? "rounded-full bg-green-500/15 px-3 py-1 text-sm text-green-600 dark:text-green-400"
+                              : "rounded-full bg-secondary px-3 py-1 text-sm text-secondary-foreground"
                           }
                         >
                           {service.status}

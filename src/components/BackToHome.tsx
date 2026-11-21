@@ -11,7 +11,7 @@ const BackToHome = () => {
     <Button
       variant="outline"
       onClick={() => router.push("/")}
-      className="border-[#E8DCCB] text-foreground hover:bg-[#F5EFE8]"
+      className="border-border hover:bg-muted"
     >
       <ArrowLeft className="mr-2 h-4 w-4" />
       Back to Home

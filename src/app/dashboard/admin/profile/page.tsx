@@ -67,11 +67,11 @@ export default function AdminProfilePage() {
   }
 
   if (error && !profile) {
-    return <p className="p-6 text-red-600">{error}</p>;
+    return <p className="p-6 text-destructive">{error}</p>;
   }
 
   if (!profile) {
-    return <p className="p-6 text-red-600">Profile not found.</p>;
+    return <p className="p-6 text-destructive">Profile not found.</p>;
   }
 
   return (
@@ -79,12 +79,12 @@ export default function AdminProfilePage() {
       <BackToHome />
       <div>
         <h1 className="text-2xl font-bold text-foreground">My Profile</h1>
-        <p className="mt-1 text-sm text-[#8A786B]">
+        <p className="mt-1 text-sm text-muted-foreground">
           View and manage your profile information.
         </p>
       </div>
 
-      {error && <p className="text-sm text-red-500">{error}</p>}
+      {error && <p className="text-sm text-destructive">{error}</p>}
 
       <ProfileInfo profile={profile} onSave={handleProfileUpdate} />
     </div>

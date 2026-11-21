@@ -30,11 +30,11 @@ const FeaturedServices = () => {
   }
 
   if (error) {
-    return <p className="py-10 text-center text-red-500">{error}</p>;
+    return <p className="py-10 text-center text-destructive">{error}</p>;
   }
   if (services.length === 0) {
     return (
-      <p className="py-10 text-center text-[#6B5B50]">
+      <p className="py-10 text-center text-muted-foreground">
         No services available yet.
       </p>
     );
@@ -48,7 +48,7 @@ const FeaturedServices = () => {
             Our Featured Services
           </h2>
 
-          <p className="mt-3 text-[#6B5B50]">
+          <p className="mt-3 text-muted-foreground">
             Discover our most popular salon services.
           </p>
         </div>
@@ -57,7 +57,7 @@ const FeaturedServices = () => {
           {services.map((service) => (
             <div
               key={service._id}
-              className="overflow-hidden rounded-xl border border-[#E8D8C3] bg-card shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+              className="overflow-hidden rounded-xl border border-border bg-card shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
             >
               <div className="relative h-52 w-full">
                 <Image
@@ -70,7 +70,7 @@ const FeaturedServices = () => {
               </div>
 
               <div className="p-5">
-                <span className="text-sm font-medium text-[#B8955A]">
+                <span className="text-sm font-medium text-gold-text">
                   {service.category}
                 </span>
 
@@ -78,23 +78,23 @@ const FeaturedServices = () => {
                   {service.serviceName}
                 </h3>
 
-                <p className="mt-2 text-sm text-[#6B5B50]">
+                <p className="mt-2 text-sm text-muted-foreground">
                   {service.description}
                 </p>
 
-                <div className="mt-5 flex items-center justify-between border-t border-[#E8D8C3] pt-4">
+                <div className="mt-5 flex items-center justify-between border-t border-border pt-4">
                   <div>
                     <p className="text-lg font-bold text-foreground">
                       ${service.price}
                     </p>
-                    <p className="text-sm text-[#6B5B50]">
+                    <p className="text-sm text-muted-foreground">
                       {service.duration} min
                     </p>
                   </div>
 
                   <Link
                     href={`/services/${service._id}`}
-                    className="rounded-md bg-[#B8955A] px-4 py-2 text-sm text-white"
+                    className="rounded-md bg-primary px-4 py-2 text-sm text-primary-foreground hover:bg-primary-hover"
                   >
                     View Details
                   </Link>

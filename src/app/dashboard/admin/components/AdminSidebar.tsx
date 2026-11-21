@@ -35,7 +35,10 @@ const AdminSidebar = () => {
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem className="mb-2">
-                <SidebarMenuButton isActive={pathname === "/dashboard/admin"}>
+                <SidebarMenuButton
+                  isActive={pathname === "/dashboard/admin"}
+                  className="hover:bg-white/10 data-active:bg-white/20"
+                >
                   <Link
                     href="/dashboard/admin"
                     className="flex w-full items-center gap-2"
@@ -49,6 +52,7 @@ const AdminSidebar = () => {
               <SidebarMenuItem className="mb-2">
                 <SidebarMenuButton
                   isActive={pathname === "/dashboard/admin/services"}
+                  className="hover:bg-white/10 data-active:bg-white/20"
                 >
                   <Link
                     href="/dashboard/admin/services"
@@ -63,6 +67,7 @@ const AdminSidebar = () => {
               <SidebarMenuItem className="mb-2">
                 <SidebarMenuButton
                   isActive={pathname === "/dashboard/admin/appointments"}
+                  className="hover:bg-white/10 data-active:bg-white/20"
                 >
                   <Link
                     href="/dashboard/admin/appointments"
@@ -77,6 +82,7 @@ const AdminSidebar = () => {
               <SidebarMenuItem className="mb-2">
                 <SidebarMenuButton
                   isActive={pathname === "/dashboard/admin/users"}
+                  className="hover:bg-white/10 data-active:bg-white/20"
                 >
                   <Link
                     href="/dashboard/admin/users"
@@ -91,6 +97,7 @@ const AdminSidebar = () => {
               <SidebarMenuItem className="mb-2">
                 <SidebarMenuButton
                   isActive={pathname === "/dashboard/admin/transactions"}
+                  className="hover:bg-white/10 data-active:bg-white/20"
                 >
                   <Link
                     href="/dashboard/admin/transactions"
@@ -105,6 +112,7 @@ const AdminSidebar = () => {
               <SidebarMenuItem className="mb-2">
                 <SidebarMenuButton
                   isActive={pathname === "/dashboard/admin/profile"}
+                  className="hover:bg-white/10 data-active:bg-white/20"
                 >
                   <Link
                     href="/dashboard/admin/profile"

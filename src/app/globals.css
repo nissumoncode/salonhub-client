@@ -34,6 +34,8 @@
   --color-secondary-foreground: var(--secondary-foreground);
   --color-secondary: var(--secondary);
   --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover);
+  --color-gold-text: var(--gold-text);
   --color-primary: var(--primary);
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
@@ -50,22 +52,24 @@
 
 :root {
   --background: #f8f1e8;
-  --foreground: #4a382e;
+  --foreground: #000000;
 
   --card: #fffaf3;
-  --card-foreground: #4a382e;
+  --card-foreground: #000000;
 
   --popover: #fffaf3;
-  --popover-foreground: #4a382e;
+  --popover-foreground: #000000;
 
   --primary: #b8955a;
-  --primary-foreground: #ffffff;
+  --primary-foreground: #3d2d25;
+  --primary-hover: #d6b77a;
+  --gold-text: #6b5140;
 
   --secondary: #e8d8c3;
   --secondary-foreground: #4a382e;
 
   --muted: #efe5d8;
-  --muted-foreground: #78685a;
+  --muted-foreground: #6b5b50;
 
   --accent: #e8d8c3;
   --accent-foreground: #4a382e;
@@ -95,16 +99,18 @@
 
 .dark {
   --background: #121212;
-  --foreground: #f8f1e8;
+  --foreground: #ffffff;
 
   --card: #1c1c1c;
-  --card-foreground: #f8f1e8;
+  --card-foreground: #ffffff;
 
   --popover: #1c1c1c;
-  --popover-foreground: #f8f1e8;
+  --popover-foreground: #ffffff;
 
   --primary: #b8955a;
-  --primary-foreground: #121212;
+  --primary-foreground: #3d2d25;
+  --primary-hover: #d6b77a;
+  --gold-text: #b8955a;
 
   --secondary: #292929;
   --secondary-foreground: #f8f1e8;

@@ -32,6 +32,7 @@ const CustomerSidebar = () => {
               <SidebarMenuItem className="mb-2">
                 <SidebarMenuButton
                   isActive={pathname === "/dashboard/customer"}
+                  className="hover:bg-white/10 data-active:bg-white/20"
                 >
                   <Link
                     href="/dashboard/customer"
@@ -46,6 +47,7 @@ const CustomerSidebar = () => {
               <SidebarMenuItem className="mb-2">
                 <SidebarMenuButton
                   isActive={pathname === "/dashboard/customer/appointments"}
+                  className="hover:bg-white/10 data-active:bg-white/20"
                 >
                   <Link
                     href="/dashboard/customer/appointments"
@@ -60,6 +62,7 @@ const CustomerSidebar = () => {
               <SidebarMenuItem className="mb-2">
                 <SidebarMenuButton
                   isActive={pathname === "/dashboard/customer/profile"}
+                  className="hover:bg-white/10 data-active:bg-white/20"
                 >
                   <Link
                     href="/dashboard/customer/profile"

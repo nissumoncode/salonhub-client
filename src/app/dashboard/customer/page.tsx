@@ -43,12 +43,12 @@ const CustomerDashboard = () => {
       <BackToHome />
       <div>
         <h1 className="text-2xl font-bold">Customer Dashboard</h1>
-        <p className="text-gray-500">Welcome to SalonHub!</p>
+        <p className="text-muted-foreground">Welcome to SalonHub!</p>
       </div>
 
       {loading && <p>Loading dashboard...</p>}
 
-      {error && <p className="text-red-500">{error}</p>}
+      {error && <p className="text-destructive">{error}</p>}
 
       {!loading && !error && (
         <CustomerOverview

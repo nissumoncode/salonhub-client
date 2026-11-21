@@ -85,7 +85,7 @@ const SignUpForm = () => {
       {/* Branding */}
       <section className="hidden md:flex flex-col justify-between bg-background p-10">
         <Link href="/" className="text-3xl font-bold text-foreground">
-          Salon<span className="text-[#B8955A]">Hub</span>
+          Salon<span className="text-gold-text">Hub</span>
         </Link>
 
         <div>
@@ -104,13 +104,13 @@ const SignUpForm = () => {
             Beauty begins with you.
           </h2>
 
-          <p className="mt-3 leading-7 text-[#6B5B50]">
+          <p className="mt-3 leading-7 text-muted-foreground">
             Discover your beauty, book your favorite services, and enjoy a
             relaxing salon experience with SalonHub.
           </p>
         </div>
 
-        <p className="text-sm text-[#6B5B50]">
+        <p className="text-sm text-muted-foreground">
           © 2026 SalonHub. All rights reserved.
         </p>
       </section>
@@ -122,21 +122,21 @@ const SignUpForm = () => {
             href="/"
             className="text-2xl font-bold text-foreground md:hidden"
           >
-            Salon<span className="text-[#B8955A]">Hub</span>
+            Salon<span className="text-gold-text">Hub</span>
           </Link>
 
           <h1 className="mt-5 text-3xl font-bold text-foreground">
             Create Account
           </h1>
 
-          <p className="mt-2 text-sm text-[#6B5B50]">
+          <p className="mt-2 text-sm text-muted-foreground">
             Join SalonHub and book your perfect salon experience.
           </p>
         </div>
 
         {/* Profile Photo */}
         <div className="mb-6 flex items-center gap-3">
-          <div className="relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-full bg-background text-[#B8955A]">
+          <div className="relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-full bg-background text-gold-text">
             {profileImage ? (
               <Image
                 src={profileImage}
@@ -153,7 +153,7 @@ const SignUpForm = () => {
           <div>
             <label
               htmlFor="profile-photo"
-              className="flex cursor-pointer items-center gap-1 text-sm font-semibold text-[#B8955A]"
+              className="flex cursor-pointer items-center gap-1 text-sm font-semibold text-gold-text"
             >
               <Camera size={15} />
               Upload Photo
@@ -165,7 +165,7 @@ const SignUpForm = () => {
               className="hidden"
               onChange={(event) => handleImageChange(event.target.files?.[0])}
             />
-            <p className="mt-1 text-xs text-[#8A7A70]">
+            <p className="mt-1 text-xs text-muted-foreground">
               Optional profile picture
             </p>
           </div>
@@ -190,7 +190,7 @@ const SignUpForm = () => {
               Full Name
             </label>
             <div className="relative">
-              <UserRound className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#9A887C]" />
+              <UserRound className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <Input
                 type="text"
                 placeholder="Enter your full name"
@@ -207,7 +207,7 @@ const SignUpForm = () => {
               Email Address
             </label>
             <div className="relative">
-              <Mail className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#9A887C]" />
+              <Mail className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <Input
                 type="email"
                 placeholder="Enter your email"
@@ -224,7 +224,7 @@ const SignUpForm = () => {
               Password
             </label>
             <div className="relative">
-              <LockKeyhole className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#9A887C]" />
+              <LockKeyhole className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <Input
                 type={showPassword ? "text" : "password"}
                 placeholder="Create a password"
@@ -235,7 +235,7 @@ const SignUpForm = () => {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#9A887C]"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground"
                 aria-label="Toggle password visibility"
               >
                 {showPassword ? <Eye size={17} /> : <EyeOff size={17} />}
@@ -249,7 +249,7 @@ const SignUpForm = () => {
               Confirm Password
             </label>
             <div className="relative">
-              <LockKeyhole className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#9A887C]" />
+              <LockKeyhole className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <Input
                 type={showConfirmPassword ? "text" : "password"}
                 placeholder="Confirm your password"
@@ -260,7 +260,7 @@ const SignUpForm = () => {
               <button
                 type="button"
                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#9A887C]"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground"
                 aria-label="Toggle confirm password visibility"
               >
                 {showConfirmPassword ? <Eye size={17} /> : <EyeOff size={17} />}
@@ -270,7 +270,7 @@ const SignUpForm = () => {
 
           <Button
             type="submit"
-            className="h-11 w-full rounded-lg bg-[#B8955A] text-white hover:bg-[#9E7D48]"
+            className="h-11 w-full rounded-lg bg-primary text-primary-foreground hover:bg-primary-hover"
           >
             Create Account
           </Button>
@@ -278,18 +278,18 @@ const SignUpForm = () => {
           <Button
             type="button"
             variant="outline"
-            className="h-11 w-full rounded-lg border-[#E8D8C3] text-foreground"
+            className="h-11 w-full rounded-lg border-border text-foreground"
           >
             <FcGoogle size={20} />
             Continue with Google
           </Button>
         </form>
 
-        <p className="mt-6 text-center text-sm text-[#6B5B50]">
+        <p className="mt-6 text-center text-sm text-muted-foreground">
           Already have an account?{" "}
           <Link
             href={`/sign-in?callbackURL=${encodeURIComponent(callbackURL)}`}
-            className="font-semibold text-[#B8955A] hover:underline"
+            className="font-semibold text-gold-text hover:underline"
           >
             Sign In
           </Link>

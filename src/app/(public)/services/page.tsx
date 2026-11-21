@@ -5,7 +5,7 @@ const ServicesPage = () => {
   return (
     <Suspense
       fallback={
-        <p className="py-16 text-center text-[#6B5B50]">Loading services...</p>
+        <p className="py-16 text-center text-muted-foreground">Loading services...</p>
       }
     >
       <ServicesPageContent />

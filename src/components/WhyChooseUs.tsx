@@ -26,7 +26,7 @@ const WhyChooseUs = () => {
           <h2 className="text-3xl font-bold text-foreground md:text-4xl">
             Why Choose SalonHub?
           </h2>
-          <p className="mt-3 text-[#6B5B50]">
+          <p className="mt-3 text-muted-foreground">
             We care about your beauty, comfort, and confidence.
           </p>
         </div>
@@ -35,7 +35,7 @@ const WhyChooseUs = () => {
           {benefits.map((benefit) => (
             <div
               key={benefit.title}
-              className="rounded-xl border border-[#E8D8C3] bg-card p-8 text-center shadow-sm"
+              className="rounded-xl border border-border bg-card p-8 text-center shadow-sm"
             >
               <span className="text-4xl">{benefit.icon}</span>
 
@@ -43,7 +43,7 @@ const WhyChooseUs = () => {
                 {benefit.title}
               </h3>
 
-              <p className="mt-3 text-sm leading-6 text-[#6B5B50]">
+              <p className="mt-3 text-sm leading-6 text-muted-foreground">
                 {benefit.description}
               </p>
             </div>

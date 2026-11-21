@@ -26,7 +26,7 @@ const AppointmentForm = ({
 }: AppointmentFormProps) => {
   if (appointments.length === 0) {
     return (
-      <div className="rounded-lg border bg-card p-6 text-center text-gray-500">
+      <div className="rounded-lg border bg-card p-6 text-center text-muted-foreground">
         No appointments found.
       </div>
     );
@@ -36,7 +36,7 @@ const AppointmentForm = ({
     <div className="overflow-x-auto rounded-lg border bg-card">
       <Table>
         <TableHeader>
-          <TableRow className="bg-[#F5EBDD] hover:bg-[#F5EBDD]">
+          <TableRow className="bg-secondary hover:bg-secondary">
             <TableHead className="text-foreground">Customer</TableHead>
             <TableHead className="text-foreground">Service</TableHead>
             <TableHead className="text-foreground">Date</TableHead>
@@ -53,7 +53,7 @@ const AppointmentForm = ({
             <TableRow key={appointment._id}>
               <TableCell>
                 <p className="font-medium">{appointment.customerName}</p>
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-muted-foreground">
                   {appointment.customerEmail}
                 </p>
               </TableCell>
@@ -64,7 +64,7 @@ const AppointmentForm = ({
               <TableCell>৳{appointment.price}</TableCell>
 
               <TableCell>
-                <span className="rounded-full bg-gray-100 px-3 py-1 text-xs">
+                <span className="rounded-full bg-secondary px-3 py-1 text-xs text-secondary-foreground">
                   {appointment.status}
                 </span>
               </TableCell>
@@ -76,7 +76,7 @@ const AppointmentForm = ({
                   {appointment.status === "Pending" && (
                     <Button
                       size="sm"
-                      className="bg-green-700 hover:bg-green-800"
+                      className="bg-green-700 text-white hover:bg-green-800"
                       disabled={updatingId === appointment._id}
                       onClick={() =>
                         onStatusChange(appointment._id, "Confirmed")

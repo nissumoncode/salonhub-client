@@ -46,7 +46,7 @@ const ServiceCategories = () => {
           <h2 className="text-3xl font-bold text-foreground md:text-4xl">
             Explore Our Categories
           </h2>
-          <p className="mt-3 text-[#6B5B50]">
+          <p className="mt-3 text-muted-foreground">
             Find the perfect service for your beauty and wellness needs.
           </p>
         </div>
@@ -56,7 +56,7 @@ const ServiceCategories = () => {
             <Link
               key={category.name}
               href={`/services?category=${encodeURIComponent(category.name)}`}
-              className="rounded-xl border border-[#E8D8C3] bg-background p-6 text-center transition hover:-translate-y-1 hover:shadow-lg"
+              className="rounded-xl border border-border bg-background p-6 text-center transition hover:-translate-y-1 hover:shadow-lg"
             >
               <span className="text-4xl">{category.icon}</span>
 
@@ -64,7 +64,7 @@ const ServiceCategories = () => {
                 {category.name}
               </h3>
 
-              <p className="mt-2 text-sm text-[#6B5B50]">
+              <p className="mt-2 text-sm text-muted-foreground">
                 {category.description}
               </p>
             </Link>

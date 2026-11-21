@@ -47,7 +47,7 @@ const ServiceDetailsPage = () => {
   if (loading) {
     return (
       <div className="flex min-h-[60vh] items-center justify-center bg-background">
-        <p className="text-[#6B5B50]">Loading service details...</p>
+        <p className="text-muted-foreground">Loading service details...</p>
       </div>
     );
   }
@@ -57,7 +57,7 @@ const ServiceDetailsPage = () => {
   return (
     <main className="min-h-screen bg-background px-4 py-12 md:px-8">
       <div className="mx-auto grid max-w-6xl gap-10 overflow-hidden rounded-2xl bg-card p-6 shadow-sm md:grid-cols-2 md:p-10">
-        <div className="relative min-h-[300px] overflow-hidden rounded-xl bg-[#E8D8C3]">
+        <div className="relative min-h-[300px] overflow-hidden rounded-xl bg-secondary">
           {service.image && (
             <Image
               src={service.image}
@@ -70,24 +70,24 @@ const ServiceDetailsPage = () => {
         </div>
 
         <div className="flex flex-col justify-center">
-          <p className="mb-3 font-medium text-[#B8955A]">{service.category}</p>
+          <p className="mb-3 font-medium text-gold-text">{service.category}</p>
 
           <h1 className="text-3xl font-bold text-foreground md:text-4xl">
             {service.serviceName}
           </h1>
 
-          <p className="mt-5 leading-7 text-[#6B5B50]">{service.description}</p>
+          <p className="mt-5 leading-7 text-muted-foreground">{service.description}</p>
 
           <div className="mt-8 flex gap-10">
             <div>
-              <p className="text-sm text-[#6B5B50]">Price</p>
+              <p className="text-sm text-muted-foreground">Price</p>
               <p className="mt-1 text-2xl font-bold text-foreground">
                 ৳{service.price}
               </p>
             </div>
 
             <div>
-              <p className="text-sm text-[#6B5B50]">Duration</p>
+              <p className="text-sm text-muted-foreground">Duration</p>
               <p className="mt-1 text-2xl font-bold text-foreground">
                 {service.duration} min
               </p>

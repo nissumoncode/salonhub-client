@@ -113,7 +113,7 @@ const BookingPage = () => {
   if (isChecking) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-background">
-        <p className="text-[#6B5B50]">Checking access...</p>
+        <p className="text-muted-foreground">Checking access...</p>
       </div>
     );
   }
@@ -124,7 +124,7 @@ const BookingPage = () => {
     <main className="min-h-screen bg-background px-4 py-12">
       <div className="mx-auto max-w-xl rounded-2xl bg-card p-6 shadow-sm md:p-8">
         <div className="mb-8 text-center">
-          <p className="font-medium uppercase tracking-widest text-[#B8955A]">
+          <p className="font-medium uppercase tracking-widest text-gold-text">
             SalonBook
           </p>
 
@@ -132,7 +132,7 @@ const BookingPage = () => {
             Book Your Appointment
           </h1>
 
-          <p className="mt-2 text-sm text-[#6B5B50]">
+          <p className="mt-2 text-sm text-muted-foreground">
             Choose your preferred date and time.
           </p>
         </div>
@@ -148,7 +148,7 @@ const BookingPage = () => {
               min={new Date().toLocaleDateString("en-CA")}
               value={date}
               onChange={(e) => setDate(e.target.value)}
-              className="w-full rounded-lg border border-[#E8D8C3] px-4 py-3 outline-none focus:border-[#B8955A]"
+              className="w-full rounded-lg border border-border bg-background px-4 py-3 text-foreground outline-none focus:border-primary"
               required
             />
           </div>
@@ -161,7 +161,7 @@ const BookingPage = () => {
             <select
               value={timeSlot}
               onChange={(e) => setTimeSlot(e.target.value)}
-              className="w-full rounded-lg border border-[#E8D8C3] px-4 py-3 outline-none focus:border-[#B8955A]"
+              className="w-full rounded-lg border border-border bg-background px-4 py-3 text-foreground outline-none focus:border-primary"
               required
             >
               <option value="">Select a time slot</option>
@@ -184,7 +184,7 @@ const BookingPage = () => {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Write your message..."
-              className="w-full resize-none rounded-lg border border-[#E8D8C3] px-4 py-3 outline-none focus:border-[#B8955A]"
+              className="w-full resize-none rounded-lg border border-border bg-background px-4 py-3 text-foreground outline-none focus:border-primary"
             />
           </div>
 

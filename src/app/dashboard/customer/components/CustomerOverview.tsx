@@ -37,9 +37,9 @@ const CustomerOverview = ({
   return (
     <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
       {stats.map((stat) => (
-        <Card key={stat.title} className="border-[#E8DCCB]">
+        <Card key={stat.title} className="border-border">
           <CardHeader>
-            <CardTitle className="text-sm font-medium text-[#6B5B50]">
+            <CardTitle className="text-sm font-medium text-muted-foreground">
               {stat.title}
             </CardTitle>
           </CardHeader>

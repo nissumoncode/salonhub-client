@@ -13,12 +13,11 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useTheme } from "next-themes";
-import { ChevronDown, SunMoon } from "lucide-react";
+import { ChevronDown } from "lucide-react";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const Navbar = () => {
   const router = useRouter();
-  const { theme, setTheme } = useTheme();
   const { data: session, isPending } = authClient.useSession();
   //const [dropdownOpen, setDropdownOpen] = useState(false);
   const [profile, setProfile] = useState<UserProfile | null>(null);
@@ -71,13 +70,13 @@ const Navbar = () => {
 
         <div className="flex items-center gap-6">
           <div className="flex items-center gap-6">
-            <Link href="/" className="text-foreground hover:text-primary">
+            <Link href="/" className="text-foreground hover:text-gold-text">
               Home
             </Link>
 
             <Link
               href="/services"
-              className="text-foreground hover:text-primary"
+              className="text-foreground hover:text-gold-text"
             >
               Browse Services
             </Link>
@@ -87,13 +86,15 @@ const Navbar = () => {
             <>
               {!session ? (
                 <div className="flex items-center gap-3">
-                  <Link href="/sign-in" className="text-foreground">
+                  <ThemeToggle />
+
+                  <Link href="/sign-in" className="text-foreground hover:text-gold-text">
                     Sign In
                   </Link>
 
                   <Link
                     href="/sign-up"
-                    className="rounded-md bg-[#B8955A] px-5 py-2 text-white hover:bg-[#9E7D48]"
+                    className="rounded-md bg-primary px-5 py-2 text-primary-foreground hover:bg-primary-hover"
                   >
                     Sign Up
                   </Link>
@@ -103,24 +104,14 @@ const Navbar = () => {
                   <span className="text-sm font-medium text-foreground">
                     Welcome, {profile?.name || user?.name || "User"}
                   </span>
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    size="icon"
-                    onClick={() =>
-                      setTheme(theme === "dark" ? "light" : "dark")
-                    }
-                    aria-label="Toggle theme"
-                  >
-                    <SunMoon className="h-5 w-5" />
-                  </Button>
+                  <ThemeToggle />
 
                   <DropdownMenu>
                     <DropdownMenuTrigger
                       render={
                         <button
                           type="button"
-                          className="flex items-center gap-2 rounded-full p-2 hover:bg-[#E8D8C3]"
+                          className="flex items-center gap-2 rounded-full p-2 hover:bg-accent"
                         />
                       }
                     >
@@ -143,8 +134,8 @@ const Navbar = () => {
                         <p className="font-semibold text-foreground">
                           {profile?.name || user?.name}
                         </p>
-                        <p className="text-gray-500">{profile?.email}</p>
-                        <p className="text-gray-500">
+                        <p className="text-muted-foreground">{profile?.email}</p>
+                        <p className="text-muted-foreground">
                           {profile?.phoneNumber || "No phone number"}
                         </p>
                       </div>
@@ -153,7 +144,7 @@ const Navbar = () => {
 
                       <Link
                         href={dashboardLink}
-                        className="block rounded px-2 py-2 text-sm hover:bg-[#F8F1E8]"
+                        className="block rounded px-2 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
                       >
                         Dashboard
                       </Link>
@@ -161,7 +152,7 @@ const Navbar = () => {
                       <Button
                         variant="ghost"
                         onClick={handleLogout}
-                        className="w-full justify-start px-2 text-sm text-red-600 hover:bg-red-50"
+                        className="w-full justify-start px-2 text-sm text-destructive hover:bg-destructive/10"
                       >
                         Logout
                       </Button>

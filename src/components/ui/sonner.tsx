@@ -37,7 +37,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
         classNames: {
           toast: "cn-toast",
           closeButton:
-            "!left-auto !right-2 !top-3 !transform-none !text-black !bg-card !h-6 !w-6 [&_svg]:!h-4 [&_svg]:!w-4 [&_svg]:!stroke-[3]",
+            "!left-auto !right-2 !top-3 !transform-none !text-foreground !bg-card !h-6 !w-6 [&_svg]:!h-4 [&_svg]:!w-4 [&_svg]:!stroke-[3]",
         },
       }}
       {...props}

@@ -17,30 +17,30 @@ export default function BlockedPage() {
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-background p-6">
-      <Card className="w-full max-w-md border-[#E8DCCB] text-center">
+      <Card className="w-full max-w-md border-border text-center">
         <CardHeader>
-          <CardTitle className="text-2xl text-red-700">
+          <CardTitle className="text-2xl text-destructive">
             Account Blocked
           </CardTitle>
 
-          <CardDescription className="text-[#6B5B50]">
+          <CardDescription className="text-muted-foreground">
             Your account access has been restricted.
           </CardDescription>
         </CardHeader>
 
         <CardContent className="space-y-5">
-          <p className="text-sm leading-6 text-[#6B5B50]">
+          <p className="text-sm leading-6 text-muted-foreground">
             Your SalonHub account has been blocked by the administrator. You
             cannot access customer dashboard features or book appointments while
             your account is blocked.
           </p>
 
-          <p className="text-sm text-[#6B5B50]">
+          <p className="text-sm text-muted-foreground">
             Please contact the administrator for assistance.
           </p>
 
           <Button
-            className="w-full bg-[#6B4F3A] hover:bg-[#4A382E]"
+            className="w-full bg-[#6B4F3A] text-white hover:bg-[#4A382E]"
             onClick={() => router.push("/")}
           >
             Back to Home

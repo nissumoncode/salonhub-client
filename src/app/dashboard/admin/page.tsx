@@ -9,7 +9,7 @@ export default function AdminDashboard() {
       <div>
         <h1 className="text-3xl font-bold text-foreground">Overview</h1>
 
-        <p className="mt-2 text-[#6B5B50]">Welcome to SalonHub Admin Panel.</p>
+        <p className="mt-2 text-muted-foreground">Welcome to SalonHub Admin Panel.</p>
       </div>
 
       <OverviewStats />

@@ -48,7 +48,7 @@ const SignInForm = () => {
     <div className="w-full max-w-6xl overflow-hidden rounded-2xl bg-card shadow-xl grid md:grid-cols-2">
       <section className="hidden md:flex flex-col justify-between bg-background p-10">
         <Link href="/" className="text-3xl font-bold text-foreground">
-          Salon<span className="text-[#B8955A]">Hub</span>
+          Salon<span className="text-gold-text">Hub</span>
         </Link>
 
         <div>
@@ -65,12 +65,12 @@ const SignInForm = () => {
           <h2 className="mt-8 text-3xl font-bold text-foreground">
             Welcome Back!
           </h2>
-          <p className="mt-3 leading-7 text-[#6B5B50]">
+          <p className="mt-3 leading-7 text-muted-foreground">
             Sign in to manage your appointments and enjoy your salon experience.
           </p>
         </div>
 
-        <p className="text-sm text-[#6B5B50]">
+        <p className="text-sm text-muted-foreground">
           © 2026 SalonHub. All rights reserved.
         </p>
       </section>
@@ -81,11 +81,11 @@ const SignInForm = () => {
             href="/"
             className="text-2xl font-bold text-foreground md:hidden"
           >
-            Salon<span className="text-[#B8955A]">Hub</span>
+            Salon<span className="text-gold-text">Hub</span>
           </Link>
 
           <h1 className="mt-5 text-3xl font-bold text-foreground">Sign In</h1>
-          <p className="mt-2 text-sm text-[#6B5B50]">
+          <p className="mt-2 text-sm text-muted-foreground">
             Welcome back! Please enter your details.
           </p>
         </div>
@@ -96,7 +96,7 @@ const SignInForm = () => {
               Email Address
             </label>
             <div className="relative">
-              <Mail className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#9A887C]" />
+              <Mail className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <Input
                 type="email"
                 placeholder="Enter your email"
@@ -113,7 +113,7 @@ const SignInForm = () => {
               Password
             </label>
             <div className="relative">
-              <LockKeyhole className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#9A887C]" />
+              <LockKeyhole className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <Input
                 type={showPassword ? "text" : "password"}
                 placeholder="Enter your password"
@@ -125,7 +125,7 @@ const SignInForm = () => {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#9A887C]"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground"
                 aria-label="Toggle password visibility"
               >
                 {showPassword ? <Eye size={17} /> : <EyeOff size={17} />}
@@ -135,7 +135,7 @@ const SignInForm = () => {
 
           <Button
             type="submit"
-            className="h-11 w-full rounded-lg bg-[#B8955A] text-white hover:bg-[#9E7D48]"
+            className="h-11 w-full rounded-lg bg-primary text-primary-foreground hover:bg-primary-hover"
           >
             Sign In
           </Button>
@@ -143,18 +143,18 @@ const SignInForm = () => {
           <Button
             type="button"
             variant="outline"
-            className="h-11 w-full rounded-lg border-[#E8D8C3] text-foreground"
+            className="h-11 w-full rounded-lg border-border text-foreground"
           >
             <FcGoogle size={20} />
             Continue with Google
           </Button>
         </form>
 
-        <p className="mt-6 text-center text-sm text-[#6B5B50]">
+        <p className="mt-6 text-center text-sm text-muted-foreground">
           Don&apos;t have an account?{" "}
           <Link
             href={`/sign-up?callbackURL=${encodeURIComponent(callbackURL)}`}
-            className="font-semibold text-[#B8955A] hover:underline"
+            className="font-semibold text-gold-text hover:underline"
           >
             Sign Up
           </Link>

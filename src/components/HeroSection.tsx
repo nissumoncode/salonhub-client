@@ -87,7 +87,7 @@ const HeroSection = () => {
 
           <Link
             href="/services"
-            className="inline-block rounded-md bg-[#B8955A] px-8 py-3 text-white hover:bg-[#9E7D48]"
+            className="inline-block rounded-md bg-primary px-8 py-3 text-primary-foreground hover:bg-primary-hover"
           >
             Explore Salon Services
           </Link>
@@ -96,7 +96,7 @@ const HeroSection = () => {
 
       <button
         onClick={prevSlide}
-        className="absolute left-5 top-1/2 -translate-y-1/2 rounded-full bg-card/80 p-3 text-foreground"
+        className="absolute left-5 top-1/2 -translate-y-1/2 rounded-full bg-card/80 p-3 text-foreground transition hover:bg-card focus-visible:ring-2 focus-visible:ring-ring"
         aria-label="Previous slide"
       >
         <ChevronLeft />
@@ -104,7 +104,7 @@ const HeroSection = () => {
 
       <button
         onClick={nextSlide}
-        className="absolute right-5 top-1/2 -translate-y-1/2 rounded-full bg-card/80 p-3 text-foreground"
+        className="absolute right-5 top-1/2 -translate-y-1/2 rounded-full bg-card/80 p-3 text-foreground transition hover:bg-card focus-visible:ring-2 focus-visible:ring-ring"
         aria-label="Next slide"
       >
         <ChevronRight />

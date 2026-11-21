@@ -189,12 +189,12 @@ const EditService = ({ service, onUpdated }: EditServiceProps) => {
           </div>
         </div>
 
-        {error && <p className="text-sm text-red-500">{error}</p>}
+        {error && <p className="text-sm text-destructive">{error}</p>}
 
         <Button
           onClick={handleUpdate}
           disabled={saving}
-          className="bg-[#4A382E] hover:bg-[#604838]"
+          className="bg-[#4A382E] text-white hover:bg-[#604838]"
         >
           {saving ? "Updating..." : "Update Service"}
         </Button>

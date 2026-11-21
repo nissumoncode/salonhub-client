@@ -124,13 +124,13 @@ const EditProfile = ({
             </p>
 
             {imageUploaded && (
-              <p className="text-xs text-green-600">
+              <p className="text-xs text-green-700 dark:text-green-400">
                 Profile image uploaded successfully.
               </p>
             )}
 
             {uploading && (
-              <p className="text-sm text-gray-500">Uploading image...</p>
+              <p className="text-sm text-muted-foreground">Uploading image...</p>
             )}
           </div>
 
@@ -145,7 +145,7 @@ const EditProfile = ({
             />
           </div>
 
-          {error && <p className="text-sm text-red-500">{error}</p>}
+          {error && <p className="text-sm text-destructive">{error}</p>}
 
           <div className="flex justify-end gap-3">
             <Button

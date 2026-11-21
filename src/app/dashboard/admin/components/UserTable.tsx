@@ -26,7 +26,7 @@ const UserTable = ({
 }: UserTableProps) => {
   if (customers.length === 0) {
     return (
-      <div className="rounded-lg border bg-card p-6 text-center text-gray-500">
+      <div className="rounded-lg border bg-card p-6 text-center text-muted-foreground">
         No customers found.
       </div>
     );
@@ -36,7 +36,7 @@ const UserTable = ({
     <div className="overflow-x-auto rounded-xl border bg-card">
       <Table>
         <TableHeader>
-          <TableRow className="bg-[#F5EBDD] hover:bg-[#F5EBDD]">
+          <TableRow className="bg-secondary hover:bg-secondary">
             <TableHead className="text-foreground">Customer</TableHead>
             <TableHead className="text-foreground">Email</TableHead>
             <TableHead className="text-foreground">Joined</TableHead>
@@ -52,9 +52,9 @@ const UserTable = ({
                 {customer.name || "N/A"}
               </TableCell>
 
-              <TableCell className="text-[#6B5B50]">{customer.email}</TableCell>
+              <TableCell className="text-muted-foreground">{customer.email}</TableCell>
 
-              <TableCell className="text-[#6B5B50]">
+              <TableCell className="text-muted-foreground">
                 {customer.createdAt
                   ? new Date(customer.createdAt).toLocaleDateString()
                   : "N/A"}
@@ -64,8 +64,8 @@ const UserTable = ({
                 <span
                   className={
                     customer.isBlocked
-                      ? "rounded-full bg-red-100 px-3 py-1 text-xs text-red-700"
-                      : "rounded-full bg-green-100 px-3 py-1 text-xs text-green-700"
+                      ? "rounded-full bg-destructive/10 px-3 py-1 text-xs text-destructive"
+                      : "rounded-full bg-green-500/15 px-3 py-1 text-xs text-green-600 dark:text-green-400"
                   }
                 >
                   {customer.isBlocked ? "Blocked" : "Active"}

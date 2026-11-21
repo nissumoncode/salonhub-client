@@ -43,20 +43,20 @@ const MyAppointments = ({
   return (
     <section className="space-y-5">
       {loading && (
-        <p className="py-8 text-center text-sm text-gray-500">
+        <p className="py-8 text-center text-sm text-muted-foreground">
           Loading appointments...
         </p>
       )}
 
       {error && (
-        <p className="py-4 text-center text-sm text-red-500">{error}</p>
+        <p className="py-4 text-center text-sm text-destructive">{error}</p>
       )}
 
       {!loading && !error && appointments.length === 0 && (
-        <Card className="border-dashed border-[#E8DCCB]">
+        <Card className="border-dashed border-border">
           <CardContent className="py-12 text-center">
             <p className="font-medium text-foreground">No appointments yet</p>
-            <p className="mt-1 text-sm text-[#8A786B]">
+            <p className="mt-1 text-sm text-muted-foreground">
               Your appointment requests will appear here.
             </p>
           </CardContent>
@@ -68,7 +68,7 @@ const MyAppointments = ({
           {appointments.map((appointment) => (
             <Card
               key={appointment._id}
-              className="overflow-hidden border-[#E8DCCB] shadow-sm"
+              className="overflow-hidden border-border shadow-sm"
             >
               <CardContent className="p-4 sm:p-5">
                 <div className="flex flex-col gap-4 sm:flex-row">
@@ -82,7 +82,7 @@ const MyAppointments = ({
                       className="h-44 w-full rounded-lg object-cover sm:h-36 sm:w-36"
                     />
                   ) : (
-                    <div className="flex h-44 w-full items-center justify-center rounded-lg bg-[#F5EFE8] text-sm text-[#8A786B] sm:h-36 sm:w-36">
+                    <div className="flex h-44 w-full items-center justify-center rounded-lg bg-secondary text-sm text-muted-foreground sm:h-36 sm:w-36">
                       No Image
                     </div>
                   )}
@@ -92,42 +92,42 @@ const MyAppointments = ({
                       <CardTitle className="text-lg text-foreground">
                         {appointment.serviceName}
                       </CardTitle>
-                      <p className="mt-1 text-sm text-[#8A786B]">
+                      <p className="mt-1 text-sm text-muted-foreground">
                         {appointment.category}
                       </p>
                     </div>
 
                     <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
                       <div>
-                        <p className="text-xs text-[#8A786B]">Price</p>
+                        <p className="text-xs text-muted-foreground">Price</p>
                         <p className="mt-1 font-semibold text-foreground">
                           ৳{appointment.price}
                         </p>
                       </div>
 
                       <div>
-                        <p className="text-xs text-[#8A786B]">Duration</p>
+                        <p className="text-xs text-muted-foreground">Duration</p>
                         <p className="mt-1 font-medium text-foreground">
                           {appointment.duration} min
                         </p>
                       </div>
 
                       <div>
-                        <p className="text-xs text-[#8A786B]">Date</p>
+                        <p className="text-xs text-muted-foreground">Date</p>
                         <p className="mt-1 font-medium text-foreground">
                           {appointment.date}
                         </p>
                       </div>
 
                       <div>
-                        <p className="text-xs text-[#8A786B]">Time</p>
+                        <p className="text-xs text-muted-foreground">Time</p>
                         <p className="mt-1 font-medium text-foreground">
                           {appointment.timeSlot}
                         </p>
                       </div>
                     </div>
                     <div>
-                      <p className="text-xs text-[#8A786B]">Request Date</p>
+                      <p className="text-xs text-muted-foreground">Request Date</p>
                       <p className="mt-1 font-medium text-foreground">
                         {new Date(appointment.createdAt).toLocaleDateString(
                           "en-GB",
@@ -135,16 +135,16 @@ const MyAppointments = ({
                       </p>
                     </div>
 
-                    <div className="flex flex-wrap items-center gap-3 border-t border-[#F0E7DD] pt-3">
+                    <div className="flex flex-wrap items-center gap-3 border-t border-border pt-3">
                       <div className="flex items-center gap-2">
-                        <span className="text-xs text-[#8A786B]">
+                        <span className="text-xs text-muted-foreground">
                           Appointment:
                         </span>
                         <Badge variant="outline">{appointment.status}</Badge>
                       </div>
 
                       <div className="flex items-center gap-2">
-                        <span className="text-xs text-[#8A786B]">Payment:</span>
+                        <span className="text-xs text-muted-foreground">Payment:</span>
                         <Badge variant="secondary">
                           {appointment.paymentStatus}
                         </Badge>
