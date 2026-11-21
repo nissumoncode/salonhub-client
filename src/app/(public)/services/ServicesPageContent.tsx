@@ -166,7 +166,7 @@ const ServicesPageContent = () => {
 
                       <div className="mt-4 flex items-center justify-between text-sm">
                         <span className="font-semibold text-foreground">
-                          ৳{service.price}
+                          ${service.price}
                         </span>
 
                         <span className="text-muted-foreground">

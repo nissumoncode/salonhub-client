@@ -61,7 +61,7 @@ const AppointmentForm = ({
               <TableCell>{appointment.serviceName}</TableCell>
               <TableCell>{appointment.date}</TableCell>
               <TableCell>{appointment.timeSlot}</TableCell>
-              <TableCell>৳{appointment.price}</TableCell>
+              <TableCell>${appointment.price}</TableCell>
 
               <TableCell>
                 <span className="rounded-full bg-secondary px-3 py-1 text-xs text-secondary-foreground">

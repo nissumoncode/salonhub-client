@@ -129,7 +129,9 @@ const ManageServicesPage = () => {
                             className="h-12 w-12 rounded-md object-cover"
                           />
                         ) : (
-                          <span className="text-muted-foreground">No Image</span>
+                          <span className="text-muted-foreground">
+                            No Image
+                          </span>
                         )}
                       </TableCell>
 
@@ -138,7 +140,7 @@ const ManageServicesPage = () => {
                       </TableCell>
 
                       <TableCell>{service.category}</TableCell>
-                      <TableCell>৳{service.price}</TableCell>
+                      <TableCell>${service.price}</TableCell>
                       <TableCell>{service.duration} min</TableCell>
 
                       <TableCell>

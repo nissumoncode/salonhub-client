@@ -4,9 +4,10 @@ import Image from "next/image";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-
+import { toast } from "sonner";
 import { useState } from "react";
 import AppointmentDetails from "./AppointmentDetails";
+import { createCheckoutSession } from "@/services/paymentApi";
 
 export interface Appointment {
   _id: string;
@@ -39,6 +40,19 @@ const MyAppointments = ({
     useState<Appointment | null>(null);
 
   const [detailsOpen, setDetailsOpen] = useState(false);
+
+  const handlePayment = async (appointmentId: string) => {
+    try {
+      const response = await createCheckoutSession(appointmentId);
+
+      if (response.url) {
+        window.location.href = response.url;
+      }
+    } catch (error) {
+      console.error("Payment Error:", error);
+      toast.error("Failed to start payment. Please try again.");
+    }
+  };
 
   return (
     <section className="space-y-5">
@@ -101,12 +115,14 @@ const MyAppointments = ({
                       <div>
                         <p className="text-xs text-muted-foreground">Price</p>
                         <p className="mt-1 font-semibold text-foreground">
-                          ৳{appointment.price}
+                          ${appointment.price}
                         </p>
                       </div>
 
                       <div>
-                        <p className="text-xs text-muted-foreground">Duration</p>
+                        <p className="text-xs text-muted-foreground">
+                          Duration
+                        </p>
                         <p className="mt-1 font-medium text-foreground">
                           {appointment.duration} min
                         </p>
@@ -127,7 +143,9 @@ const MyAppointments = ({
                       </div>
                     </div>
                     <div>
-                      <p className="text-xs text-muted-foreground">Request Date</p>
+                      <p className="text-xs text-muted-foreground">
+                        Request Date
+                      </p>
                       <p className="mt-1 font-medium text-foreground">
                         {new Date(appointment.createdAt).toLocaleDateString(
                           "en-GB",
@@ -144,7 +162,9 @@ const MyAppointments = ({
                       </div>
 
                       <div className="flex items-center gap-2">
-                        <span className="text-xs text-muted-foreground">Payment:</span>
+                        <span className="text-xs text-muted-foreground">
+                          Payment:
+                        </span>
                         <Badge variant="secondary">
                           {appointment.paymentStatus}
                         </Badge>
@@ -160,6 +180,18 @@ const MyAppointments = ({
                           Cancel Appointment
                         </Button>
                       )}
+
+                      {appointment.status === "Confirmed" &&
+                        appointment.paymentStatus === "Unpaid" && (
+                          <Button
+                            size="sm"
+                            className="ml-auto"
+                            onClick={() => handlePayment(appointment._id)}
+                          >
+                            Pay Now
+                          </Button>
+                        )}
+
                       <Button
                         variant="outline"
                         size="sm"

@@ -76,13 +76,15 @@ const ServiceDetailsPage = () => {
             {service.serviceName}
           </h1>
 
-          <p className="mt-5 leading-7 text-muted-foreground">{service.description}</p>
+          <p className="mt-5 leading-7 text-muted-foreground">
+            {service.description}
+          </p>
 
           <div className="mt-8 flex gap-10">
             <div>
               <p className="text-sm text-muted-foreground">Price</p>
               <p className="mt-1 text-2xl font-bold text-foreground">
-                ৳{service.price}
+                ${service.price}
               </p>
             </div>
 

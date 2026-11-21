@@ -48,13 +48,15 @@ const AppointmentDetails = ({
             <h3 className="text-lg font-semibold text-foreground">
               {appointment.serviceName}
             </h3>
-            <p className="text-sm text-muted-foreground">{appointment.category}</p>
+            <p className="text-sm text-muted-foreground">
+              {appointment.category}
+            </p>
           </div>
 
           <div className="grid grid-cols-2 gap-4 text-sm">
             <div>
               <p className="text-muted-foreground">Price</p>
-              <p className="font-medium">৳{appointment.price}</p>
+              <p className="font-medium">${appointment.price}</p>
             </div>
 
             <div>
@@ -82,7 +84,9 @@ const AppointmentDetails = ({
 
           <div className="flex flex-wrap gap-3 border-t pt-4">
             <div className="flex items-center gap-2">
-              <span className="text-sm text-muted-foreground">Appointment:</span>
+              <span className="text-sm text-muted-foreground">
+                Appointment:
+              </span>
               <Badge variant="outline">{appointment.status}</Badge>
             </div>
 
