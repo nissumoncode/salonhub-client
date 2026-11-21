@@ -6,6 +6,8 @@ export interface DashboardStats {
   totalAppointments: number;
   pendingAppointments: number;
   confirmedAppointments: number;
+  successfulPayments: number;
+  pendingPayments: number;
 }
 
 export const getDashboardStats = async (): Promise<DashboardStats> => {

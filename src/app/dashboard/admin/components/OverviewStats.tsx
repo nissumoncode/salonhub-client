@@ -81,8 +81,22 @@ const OverviewStats = () => {
         </CardHeader>
 
         <CardContent>
-          <p className="text-lg font-bold text-foreground">
-            Payment system pending
+          <p className="text-3xl font-bold text-foreground">
+            {stats?.successfulPayments ?? 0}
+          </p>
+        </CardContent>
+      </Card>
+
+      <Card className="border-border">
+        <CardHeader>
+          <CardTitle className="text-sm font-medium text-muted-foreground">
+            Payment System Pending
+          </CardTitle>
+        </CardHeader>
+
+        <CardContent>
+          <p className="text-3xl font-bold text-foreground">
+            {stats?.pendingPayments ?? 0}
           </p>
         </CardContent>
       </Card>
