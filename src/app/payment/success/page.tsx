@@ -42,7 +42,8 @@ const PaymentSuccessContent = () => {
 
         setServiceName(data.serviceName);
 
-        if (data.paymentStatus === "Paid") {
+        // Handle both "Paid" and "paid".
+        if (String(data.paymentStatus).toLowerCase() === "paid") {
           setStatus("Paid");
           return;
         }
