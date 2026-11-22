@@ -1,4 +1,5 @@
-"use client";
+﻿"use client";
+import { formatDuration } from "@/lib/formatDuration";
 
 import Image from "next/image";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
@@ -78,7 +79,7 @@ const MyAppointments = ({
       )}
 
       {!loading && !error && appointments.length > 0 && (
-        <div className="grid gap-5">
+        <div className="grid min-w-0 gap-4 sm:gap-5">
           {appointments.map((appointment) => (
             <Card
               key={appointment._id}
@@ -124,7 +125,7 @@ const MyAppointments = ({
                           Duration
                         </p>
                         <p className="mt-1 font-medium text-foreground">
-                          {appointment.duration} min
+                          {formatDuration(appointment.duration)}
                         </p>
                       </div>
 
@@ -153,7 +154,7 @@ const MyAppointments = ({
                       </p>
                     </div>
 
-                    <div className="flex flex-wrap items-center gap-3 border-t border-border pt-3">
+                    <div className="flex flex-wrap items-center gap-2 border-t border-border pt-3 sm:gap-3">
                       <div className="flex items-center gap-2">
                         <span className="text-xs text-muted-foreground">
                           Appointment:
@@ -174,7 +175,7 @@ const MyAppointments = ({
                         <Button
                           variant="destructive"
                           size="sm"
-                          className="ml-auto"
+                          className="w-full sm:ml-auto sm:w-auto"
                           onClick={() => onCancel(appointment._id)}
                         >
                           Cancel Appointment
@@ -185,7 +186,7 @@ const MyAppointments = ({
                         appointment.paymentStatus === "Unpaid" && (
                           <Button
                             size="sm"
-                            className="ml-auto"
+                            className="w-full sm:ml-auto sm:w-auto"
                             onClick={() => handlePayment(appointment._id)}
                           >
                             Pay Now
@@ -221,3 +222,5 @@ const MyAppointments = ({
 };
 
 export default MyAppointments;
+
+

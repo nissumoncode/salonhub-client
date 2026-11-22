@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import type { Appointment } from "@/types/appointment";
 
@@ -26,15 +26,15 @@ const AppointmentForm = ({
 }: AppointmentFormProps) => {
   if (appointments.length === 0) {
     return (
-      <div className="rounded-lg border bg-card p-6 text-center text-muted-foreground">
+      <div className="rounded-lg border bg-card p-4 sm:p-6 text-center text-muted-foreground">
         No appointments found.
       </div>
     );
   }
 
   return (
-    <div className="overflow-x-auto rounded-lg border bg-card">
-      <Table>
+    <div className="w-full min-w-0 overflow-x-auto rounded-lg border bg-card">
+      <Table className="min-w-[950px]">
         <TableHeader>
           <TableRow className="bg-secondary hover:bg-secondary">
             <TableHead className="text-foreground">Customer</TableHead>
@@ -72,7 +72,7 @@ const AppointmentForm = ({
               <TableCell>{appointment.paymentStatus}</TableCell>
 
               <TableCell>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 whitespace-nowrap">
                   {appointment.status === "Pending" && (
                     <Button
                       size="sm"
@@ -110,3 +110,4 @@ const AppointmentForm = ({
 };
 
 export default AppointmentForm;
+

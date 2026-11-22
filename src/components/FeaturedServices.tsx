@@ -1,4 +1,5 @@
-"use client";
+﻿"use client";
+import { formatDuration } from "@/lib/formatDuration";
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -41,25 +42,25 @@ const FeaturedServices = () => {
   }
 
   return (
-    <section className="bg-background px-6 py-16">
+    <section className="bg-background px-4 py-10 sm:px-6 sm:py-14 md:py-16">
       <div className="mx-auto max-w-7xl">
-        <div className="mb-10 text-center">
-          <h2 className="text-3xl font-bold text-foreground md:text-4xl">
+        <div className="mb-7 text-center sm:mb-10">
+          <h2 className="text-2xl font-bold text-foreground sm:text-3xl md:text-4xl">
             Our Featured Services
           </h2>
 
-          <p className="mt-3 text-muted-foreground">
+          <p className="mx-auto mt-3 max-w-xl text-sm text-muted-foreground sm:text-base">
             Discover our most popular salon services.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-5 min-[480px]:grid-cols-2 sm:gap-7 lg:grid-cols-3">
           {services.map((service) => (
             <div
               key={service._id}
               className="overflow-hidden rounded-xl border border-border bg-card shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
             >
-              <div className="relative h-52 w-full">
+              <div className="relative h-48 w-full sm:h-52">
                 <Image
                   src={service.image}
                   alt={service.serviceName}
@@ -69,12 +70,12 @@ const FeaturedServices = () => {
                 />
               </div>
 
-              <div className="p-5">
+              <div className="p-4 sm:p-5">
                 <span className="text-sm font-medium text-gold-text">
                   {service.category}
                 </span>
 
-                <h3 className="mt-2 text-xl font-bold text-foreground">
+                <h3 className="mt-2 break-words text-lg font-bold text-foreground sm:text-xl">
                   {service.serviceName}
                 </h3>
 
@@ -82,19 +83,19 @@ const FeaturedServices = () => {
                   {service.description}
                 </p>
 
-                <div className="mt-5 flex items-center justify-between border-t border-border pt-4">
+                <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-border pt-4">
                   <div>
                     <p className="text-lg font-bold text-foreground">
                       ${service.price}
                     </p>
                     <p className="text-sm text-muted-foreground">
-                      {service.duration} min
+                      {formatDuration(service.duration)}
                     </p>
                   </div>
 
                   <Link
                     href={`/services/${service._id}`}
-                    className="rounded-md bg-primary px-4 py-2 text-sm text-primary-foreground hover:bg-primary-hover"
+                    className="rounded-md bg-primary px-3 py-2 text-xs text-primary-foreground sm:px-4 sm:text-sm hover:bg-primary-hover"
                   >
                     View Details
                   </Link>
@@ -109,3 +110,5 @@ const FeaturedServices = () => {
 };
 
 export default FeaturedServices;
+
+

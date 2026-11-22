@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { updateService, uploadServiceImage } from "@/services/serviceApi";
@@ -42,7 +42,8 @@ const EditService = ({ service, onUpdated }: EditServiceProps) => {
     category: service.category,
     description: service.description,
     price: String(service.price),
-    duration: String(service.duration),
+    durationHours: String(Math.floor(service.duration / 60)),
+    durationMinutes: String(service.duration % 60),
     status: service.status,
   });
 
@@ -53,15 +54,29 @@ const EditService = ({ service, onUpdated }: EditServiceProps) => {
       !formData.serviceName.trim() ||
       !formData.category.trim() ||
       !formData.description.trim() ||
-      !formData.price ||
-      !formData.duration
+      !formData.price
     ) {
       setError("Please fill in all service fields.");
       return;
     }
 
-    if (Number(formData.price) <= 0 || Number(formData.duration) <= 0) {
-      setError("Price and duration must be positive numbers.");
+    const hours = Number(formData.durationHours || 0);
+    const minutes = Number(formData.durationMinutes || 0);
+    const totalDuration = hours * 60 + minutes;
+
+    if (
+      Number(formData.price) <= 0 ||
+      !Number.isFinite(Number(formData.price)) ||
+      !Number.isInteger(hours) ||
+      !Number.isInteger(minutes) ||
+      hours < 0 ||
+      minutes < 0 ||
+      minutes > 59 ||
+      totalDuration <= 0
+    ) {
+      setError(
+        "Enter a valid price and duration. Minutes must be between 0 and 59.",
+      );
       return;
     }
 
@@ -77,7 +92,7 @@ const EditService = ({ service, onUpdated }: EditServiceProps) => {
         category: formData.category.trim(),
         description: formData.description.trim(),
         price: Number(formData.price),
-        duration: Number(formData.duration),
+        duration: totalDuration,
         image: imageUrl,
         status: formData.status,
       });
@@ -93,17 +108,17 @@ const EditService = ({ service, onUpdated }: EditServiceProps) => {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger className="inline-flex h-8 items-center justify-center rounded-md bg-[#4A382E] px-3 text-sm font-medium text-white shadow-sm hover:bg-[#3D2D25]">
+      <DialogTrigger className="inline-flex h-8 min-w-0 items-center justify-center rounded-md bg-[#4A382E] px-3 text-sm font-medium text-white shadow-sm hover:bg-[#3D2D25]">
         Edit
       </DialogTrigger>
 
-      <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-xl">
+      <DialogContent className="max-h-[90dvh] w-[calc(100%-1rem)] overflow-y-auto p-4 sm:w-full sm:max-w-xl sm:p-6">
         <DialogHeader>
           <DialogTitle className="text-foreground">Edit Service</DialogTitle>
           <DialogDescription>Update the service information.</DialogDescription>
         </DialogHeader>
 
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
           <div className="space-y-2">
             <Label>Service Name</Label>
             <Input
@@ -147,16 +162,45 @@ const EditService = ({ service, onUpdated }: EditServiceProps) => {
             />
           </div>
 
-          <div className="space-y-2">
-            <Label>Estimated Duration (minutes)</Label>
-            <Input
-              type="number"
-              min="1"
-              value={formData.duration}
-              onChange={(e) =>
-                setFormData({ ...formData, duration: e.target.value })
-              }
-            />
+          <div className="space-y-2 sm:col-span-2">
+            <Label>Estimated Duration</Label>
+
+            <div className="grid grid-cols-2 gap-3">
+              <div className="space-y-1">
+                <Label className="text-xs text-muted-foreground">Hours</Label>
+                <Input
+                  type="number"
+                  min="0"
+                  step="1"
+                  value={formData.durationHours}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      durationHours: e.target.value,
+                    })
+                  }
+                  placeholder="Hours"
+                />
+              </div>
+
+              <div className="space-y-1">
+                <Label className="text-xs text-muted-foreground">Minutes</Label>
+                <Input
+                  type="number"
+                  min="0"
+                  max="59"
+                  step="1"
+                  value={formData.durationMinutes}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      durationMinutes: e.target.value,
+                    })
+                  }
+                  placeholder="Minutes (0-59)"
+                />
+              </div>
+            </div>
           </div>
 
           <div className="space-y-2">
@@ -204,3 +248,4 @@ const EditService = ({ service, onUpdated }: EditServiceProps) => {
 };
 
 export default EditService;
+

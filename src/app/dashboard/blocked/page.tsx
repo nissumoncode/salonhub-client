@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useRouter } from "next/navigation";
 
@@ -16,10 +16,10 @@ export default function BlockedPage() {
   const router = useRouter();
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-background p-6">
+    <main className="flex min-h-screen items-center justify-center bg-background p-3 sm:p-6">
       <Card className="w-full max-w-md border-border text-center">
-        <CardHeader>
-          <CardTitle className="text-2xl text-destructive">
+        <CardHeader className="p-4 sm:p-6">
+          <CardTitle className="text-xl text-destructive sm:text-2xl">
             Account Blocked
           </CardTitle>
 
@@ -28,7 +28,7 @@ export default function BlockedPage() {
           </CardDescription>
         </CardHeader>
 
-        <CardContent className="space-y-5">
+        <CardContent className="space-y-4 p-4 pt-0 sm:space-y-5 sm:p-6 sm:pt-0">
           <p className="text-sm leading-6 text-muted-foreground">
             Your SalonHub account has been blocked by the administrator. You
             cannot access customer dashboard features or book appointments while
@@ -50,3 +50,4 @@ export default function BlockedPage() {
     </main>
   );
 }
+

@@ -1,4 +1,5 @@
-"use client";
+﻿"use client";
+
 import BackToHome from "@/components/BackToHome";
 import { useEffect, useState } from "react";
 import { getServices } from "@/services/serviceApi";
@@ -19,6 +20,17 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+
+// Convert total minutes into hours and minutes
+const formatDuration = (totalMinutes: number) => {
+  const hours = Math.floor(totalMinutes / 60);
+  const minutes = totalMinutes % 60;
+
+  if (hours === 0) return `${minutes} minutes`;
+  if (minutes === 0) return `${hours} hours`;
+
+  return `${hours} hour${hours > 1 ? "s" : ""} ${minutes} minutes`;
+};
 
 const ManageServicesPage = () => {
   const [services, setServices] = useState<Service[]>([]);
@@ -65,8 +77,9 @@ const ManageServicesPage = () => {
       ignore = true;
     };
   }, []);
+
   if (loading) {
-    return <p className="p-6">Loading services...</p>;
+    return <p className="p-3 sm:p-5 md:p-6">Loading services...</p>;
   }
 
   if (error) {
@@ -74,11 +87,12 @@ const ManageServicesPage = () => {
   }
 
   return (
-    <div className="space-y-6 p-6">
+    <div className="min-w-0 space-y-5 p-3 sm:space-y-6 sm:p-5 md:p-6">
       <BackToHome />
+
       <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
         <div>
-          <h1 className="text-2xl font-bold text-foreground">
+          <h1 className="text-xl font-bold text-foreground sm:text-2xl">
             Manage Services
           </h1>
           <p className="mt-1 text-muted-foreground">
@@ -97,13 +111,13 @@ const ManageServicesPage = () => {
         </Card>
       ) : (
         <Card>
-          <CardHeader>
+          <CardHeader className="p-4 sm:p-6">
             <CardTitle className="text-foreground">All Services</CardTitle>
           </CardHeader>
 
-          <CardContent>
-            <div className="overflow-x-auto">
-              <Table>
+          <CardContent className="p-3 sm:p-6">
+            <div className="w-full overflow-x-auto">
+              <Table className="min-w-[750px]">
                 <TableHeader>
                   <TableRow>
                     <TableHead>Image</TableHead>
@@ -141,7 +155,8 @@ const ManageServicesPage = () => {
 
                       <TableCell>{service.category}</TableCell>
                       <TableCell>${service.price}</TableCell>
-                      <TableCell>{service.duration} min</TableCell>
+
+                      <TableCell>{formatDuration(service.duration)}</TableCell>
 
                       <TableCell>
                         <span
@@ -181,3 +196,4 @@ const ManageServicesPage = () => {
 };
 
 export default ManageServicesPage;
+

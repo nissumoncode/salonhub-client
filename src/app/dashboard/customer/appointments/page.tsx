@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import BackToHome from "@/components/BackToHome";
 import { useCallback, useEffect, useState } from "react";
 import MyAppointments, { type Appointment } from "../components/MyAppointments";
@@ -65,10 +65,10 @@ const CustomerAppointmentsPage = () => {
   };
 
   return (
-    <div className="space-y-6 p-6">
+    <div className="min-w-0 space-y-5 p-3 sm:space-y-6 sm:p-5 md:p-6">
       <BackToHome />
       <div>
-        <h1 className="text-2xl font-bold text-foreground">My Appointments</h1>
+        <h1 className="text-xl font-bold text-foreground sm:text-2xl">My Appointments</h1>
 
         <p className="text-muted-foreground">
           View and manage your appointment requests.
@@ -86,3 +86,4 @@ const CustomerAppointmentsPage = () => {
 };
 
 export default CustomerAppointmentsPage;
+

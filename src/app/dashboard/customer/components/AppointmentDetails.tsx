@@ -1,4 +1,5 @@
-"use client";
+﻿"use client";
+import { formatDuration } from "@/lib/formatDuration";
 
 import Image from "next/image";
 import {
@@ -25,7 +26,7 @@ const AppointmentDetails = ({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-h-[85vh] overflow-y-auto sm:max-w-lg">
+      <DialogContent className="max-h-[90dvh] w-[calc(100%-1rem)] overflow-y-auto p-4 sm:w-full sm:max-w-lg sm:p-6">
         <DialogHeader>
           <DialogTitle className="text-foreground">
             Appointment Details
@@ -53,7 +54,7 @@ const AppointmentDetails = ({
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 text-sm">
+          <div className="grid grid-cols-1 gap-3 text-sm min-[380px]:grid-cols-2 sm:gap-4">
             <div>
               <p className="text-muted-foreground">Price</p>
               <p className="font-medium">${appointment.price}</p>
@@ -61,7 +62,7 @@ const AppointmentDetails = ({
 
             <div>
               <p className="text-muted-foreground">Duration</p>
-              <p className="font-medium">{appointment.duration} minutes</p>
+              <p className="font-medium">{formatDuration(appointment.duration)}</p>
             </div>
 
             <div>
@@ -82,7 +83,7 @@ const AppointmentDetails = ({
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-3 border-t pt-4">
+          <div className="flex flex-wrap gap-2 border-t pt-4 sm:gap-3">
             <div className="flex items-center gap-2">
               <span className="text-sm text-muted-foreground">
                 Appointment:
@@ -102,3 +103,5 @@ const AppointmentDetails = ({
 };
 
 export default AppointmentDetails;
+
+

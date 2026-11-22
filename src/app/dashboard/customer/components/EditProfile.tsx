@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import type { FormEvent, ChangeEvent } from "react";
@@ -78,7 +78,7 @@ const EditProfile = ({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-125">
+      <DialogContent className="max-h-[90dvh] w-[calc(100%-1rem)] overflow-y-auto p-4 sm:w-full sm:max-w-lg sm:p-6">
         <DialogHeader>
           <DialogTitle className="text-foreground">Edit Profile</DialogTitle>
           <DialogDescription>
@@ -131,7 +131,7 @@ const EditProfile = ({
 
           {error && <p className="text-sm text-destructive">{error}</p>}
 
-          <div className="flex justify-end gap-3">
+          <div className="flex flex-col-reverse gap-2 sm:flex-row sm:justify-end sm:gap-3">
             <Button
               type="button"
               variant="outline"
@@ -141,7 +141,7 @@ const EditProfile = ({
               Cancel
             </Button>
 
-            <Button type="submit" disabled={saving || uploading}>
+            <Button type="submit" disabled={saving || uploading} className="w-full sm:w-auto">
               {uploading
                 ? "Uploading..."
                 : saving
@@ -156,3 +156,4 @@ const EditProfile = ({
 };
 
 export default EditProfile;
+

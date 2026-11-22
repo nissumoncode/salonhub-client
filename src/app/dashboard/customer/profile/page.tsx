@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { toast } from "sonner";
 import { useEffect, useState } from "react";
 import ProfileInfo from "../components/ProfileInfo";
@@ -63,10 +63,10 @@ const CustomerProfilePage = () => {
   };
 
   return (
-    <div className="space-y-6 p-6">
+    <div className="min-w-0 space-y-5 p-3 sm:space-y-6 sm:p-5 md:p-6">
       <BackToHome />
       <div>
-        <h1 className="text-2xl font-bold text-foreground">My Profile</h1>
+        <h1 className="text-xl font-bold text-foreground sm:text-2xl">My Profile</h1>
         <p className="mt-1 text-sm text-muted-foreground">
           View and manage your profile information.
         </p>
@@ -88,3 +88,4 @@ const CustomerProfilePage = () => {
 };
 
 export default CustomerProfilePage;
+

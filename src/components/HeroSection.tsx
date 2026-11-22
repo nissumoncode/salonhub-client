@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
@@ -50,7 +50,7 @@ const HeroSection = () => {
   const prevSlide = () => setCurrentIndex((prev) => prev - 1);
 
   return (
-    <section className="relative h-137.5 w-full overflow-hidden">
+    <section className="relative h-[420px] w-full sm:h-[500px] md:h-[550px] lg:h-[600px] overflow-hidden">
       <div
         onTransitionEnd={handleTransitionEnd}
         className={`flex h-full ${
@@ -74,20 +74,20 @@ const HeroSection = () => {
 
       <div className="absolute inset-0 bg-black/45" />
 
-      <div className="absolute inset-0 flex items-center justify-center px-6">
-        <div className="max-w-2xl text-center">
-          <h1 className="mb-5 text-4xl font-bold text-white md:text-6xl">
+      <div className="absolute inset-0 flex items-center justify-center px-4 sm:px-6">
+        <div className="w-full max-w-2xl text-center">
+          <h1 className="mb-4 text-3xl font-bold leading-tight text-white sm:mb-5 sm:text-4xl md:text-6xl">
             Discover Your Beauty
           </h1>
 
-          <p className="mb-8 text-lg text-white/90">
+          <p className="mx-auto mb-6 max-w-xl text-sm leading-6 text-white/90 sm:mb-8 sm:text-base md:text-lg">
             Experience premium salon services and enjoy the beauty care you
             deserve.
           </p>
 
           <Link
             href="/services"
-            className="inline-block rounded-md bg-primary px-8 py-3 text-primary-foreground hover:bg-primary-hover"
+            className="inline-block rounded-md bg-primary px-5 py-3 text-sm text-primary-foreground sm:px-8 sm:text-base hover:bg-primary-hover"
           >
             Explore Salon Services
           </Link>
@@ -96,7 +96,7 @@ const HeroSection = () => {
 
       <button
         onClick={prevSlide}
-        className="absolute left-5 top-1/2 -translate-y-1/2 rounded-full bg-card/80 p-3 text-foreground transition hover:bg-card focus-visible:ring-2 focus-visible:ring-ring"
+        className="absolute left-2 top-1/2 sm:left-5 -translate-y-1/2 rounded-full bg-card/80 p-2 text-foreground transition sm:p-3 hover:bg-card focus-visible:ring-2 focus-visible:ring-ring"
         aria-label="Previous slide"
       >
         <ChevronLeft />
@@ -104,7 +104,7 @@ const HeroSection = () => {
 
       <button
         onClick={nextSlide}
-        className="absolute right-5 top-1/2 -translate-y-1/2 rounded-full bg-card/80 p-3 text-foreground transition hover:bg-card focus-visible:ring-2 focus-visible:ring-ring"
+        className="absolute right-2 top-1/2 sm:right-5 -translate-y-1/2 rounded-full bg-card/80 p-2 text-foreground transition sm:p-3 hover:bg-card focus-visible:ring-2 focus-visible:ring-ring"
         aria-label="Next slide"
       >
         <ChevronRight />
@@ -114,3 +114,4 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+

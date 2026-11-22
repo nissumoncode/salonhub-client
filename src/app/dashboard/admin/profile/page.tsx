@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import BackToHome from "@/components/BackToHome";
 import { useEffect, useState } from "react";
 import ProfileInfo from "../components/ProfileInfo";
@@ -63,7 +63,7 @@ export default function AdminProfilePage() {
   };
 
   if (loading) {
-    return <p className="p-6">Loading profile...</p>;
+    return <p className="p-3 sm:p-5 md:p-6">Loading profile...</p>;
   }
 
   if (error && !profile) {
@@ -75,10 +75,10 @@ export default function AdminProfilePage() {
   }
 
   return (
-    <div className="space-y-6 p-6">
+    <div className="min-w-0 space-y-5 p-3 sm:space-y-6 sm:p-5 md:p-6">
       <BackToHome />
       <div>
-        <h1 className="text-2xl font-bold text-foreground">My Profile</h1>
+        <h1 className="text-xl font-bold text-foreground sm:text-2xl">My Profile</h1>
         <p className="mt-1 text-sm text-muted-foreground">
           View and manage your profile information.
         </p>
@@ -90,3 +90,4 @@ export default function AdminProfilePage() {
     </div>
   );
 }
+

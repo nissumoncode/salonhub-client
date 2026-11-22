@@ -1,4 +1,4 @@
-import CustomerRouteProtect from "@/app/dashboard/customer/components/CustomerRouteProtect";
+﻿import CustomerRouteProtect from "@/app/dashboard/customer/components/CustomerRouteProtect";
 import CustomerSidebar from "@/app/dashboard/customer/components/CustomerSidebar";
 
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
@@ -10,13 +10,13 @@ const CustomerLayout = ({ children }: { children: React.ReactNode }) => {
       <SidebarProvider>
         <CustomerSidebar />
 
-        <main className="min-h-screen flex-1 bg-background">
-          <div className="border-b bg-card p-4 flex items-center justify-between">
+        <main className="min-h-screen min-w-0 flex-1 bg-background">
+          <div className="flex items-center justify-between border-b bg-card px-3 py-3 sm:px-4 sm:py-4">
             <SidebarTrigger />
             <ThemeToggle />
           </div>
 
-          <div className="p-6">{children}</div>
+          <div className="min-w-0 p-3 sm:p-4 md:p-6">{children}</div>
         </main>
       </SidebarProvider>
     </CustomerRouteProtect>
@@ -24,3 +24,4 @@ const CustomerLayout = ({ children }: { children: React.ReactNode }) => {
 };
 
 export default CustomerLayout;
+

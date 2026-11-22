@@ -1,13 +1,13 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 
 import { Card, CardContent } from "@/components/ui/card";
 
 const PaymentCancelPage = () => {
   return (
-    <main className="flex min-h-[70vh] items-center justify-center p-6">
+    <main className="flex min-h-[70vh] items-center justify-center p-3 sm:p-6">
       <Card className="w-full max-w-lg border-border shadow-sm">
-        <CardContent className="space-y-5 p-8 text-center">
-          <h1 className="text-2xl font-bold text-foreground">
+        <CardContent className="space-y-4 p-4 text-center sm:space-y-5 sm:p-8">
+          <h1 className="text-xl font-bold sm:text-2xl text-foreground">
             Payment Cancelled
           </h1>
 
@@ -29,3 +29,4 @@ const PaymentCancelPage = () => {
 };
 
 export default PaymentCancelPage;
+

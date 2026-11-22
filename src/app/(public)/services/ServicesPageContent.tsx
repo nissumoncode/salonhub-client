@@ -1,4 +1,5 @@
 "use client";
+import { formatDuration } from "@/lib/formatDuration";
 
 import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
@@ -17,6 +18,7 @@ const ServicesPageContent = () => {
 
   const selectedCategory = searchParams.get("category") || "all";
   const [category, setCategory] = useState(selectedCategory);
+
   const [sort, setSort] = useState("default");
 
   useEffect(() => {
@@ -58,37 +60,37 @@ const ServicesPageContent = () => {
   }, [services, search, category, sort]);
 
   return (
-    <main className="min-h-screen bg-background px-4 py-12 md:px-8">
+    <main className="min-h-screen bg-background px-3 py-8 sm:px-4 sm:py-10 md:px-8 md:py-12">
       <div className="mx-auto max-w-7xl">
-        <div className="mb-10 text-center">
+        <div className="mb-7 text-center sm:mb-10">
           <p className="mb-2 font-medium uppercase tracking-[0.2em] text-gold-text">
             Discover Our Services
           </p>
 
-          <h1 className="text-3xl font-bold text-foreground md:text-5xl">
+          <h1 className="text-2xl font-bold leading-tight text-foreground sm:text-3xl md:text-5xl">
             Explore Salon Services
           </h1>
 
-          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
+          <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-muted-foreground sm:mt-4 sm:text-base">
             Find the perfect salon service to refresh your look and feel your
             best.
           </p>
         </div>
 
         {/* Search and Filter */}
-        <div className="mb-10 grid gap-4 rounded-xl border border-border bg-card p-5 md:grid-cols-3">
+        <div className="mb-7 grid min-w-0 gap-3 rounded-xl border border-border bg-card p-3 sm:mb-10 sm:gap-4 sm:p-5 md:grid-cols-3">
           <input
             type="text"
             placeholder="Search services..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="rounded-lg border border-border bg-background px-4 py-3 text-foreground outline-none focus:border-primary"
+            className="w-full min-w-0 rounded-lg border border-border bg-background px-3 py-3 text-sm text-foreground outline-none focus:border-primary sm:px-4 sm:text-base"
           />
 
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="rounded-lg border border-border bg-background px-4 py-3 text-foreground outline-none focus:border-primary"
+            className="w-full min-w-0 rounded-lg border border-border bg-background px-3 py-3 text-sm text-foreground outline-none focus:border-primary sm:px-4 sm:text-base"
           >
             <option value="all">All Categories</option>
             {categories.map((item) => (
@@ -101,7 +103,7 @@ const ServicesPageContent = () => {
           <select
             value={sort}
             onChange={(e) => setSort(e.target.value)}
-            className="rounded-lg border border-border bg-background px-4 py-3 text-foreground outline-none focus:border-primary"
+            className="w-full min-w-0 rounded-lg border border-border bg-background px-3 py-3 text-sm text-foreground outline-none focus:border-primary sm:px-4 sm:text-base"
           >
             <option value="default">Default Sorting</option>
             <option value="low">Price: Low to High</option>
@@ -133,13 +135,13 @@ const ServicesPageContent = () => {
                 No services found.
               </p>
             ) : (
-              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
                 {filteredServices.map((service) => (
                   <div
                     key={service._id}
                     className="overflow-hidden rounded-xl border border-border bg-card shadow-sm transition hover:-translate-y-1 hover:shadow-md"
                   >
-                    <div className="relative h-56 w-full bg-secondary">
+                    <div className="relative h-48 w-full bg-secondary sm:h-56">
                       {service.image && (
                         <Image
                           src={service.image}
@@ -151,12 +153,12 @@ const ServicesPageContent = () => {
                       )}
                     </div>
 
-                    <div className="p-5">
+                    <div className="p-4 sm:p-5">
                       <p className="mb-2 text-sm font-medium text-gold-text">
                         {service.category}
                       </p>
 
-                      <h2 className="text-xl font-semibold text-foreground">
+                      <h2 className="break-words text-lg font-semibold text-foreground sm:text-xl">
                         {service.serviceName}
                       </h2>
 
@@ -164,19 +166,19 @@ const ServicesPageContent = () => {
                         {service.description}
                       </p>
 
-                      <div className="mt-4 flex items-center justify-between text-sm">
+                      <div className="mt-4 flex flex-wrap items-center justify-between gap-2 text-sm">
                         <span className="font-semibold text-foreground">
                           ${service.price}
                         </span>
 
                         <span className="text-muted-foreground">
-                          {service.duration} min
+                          {formatDuration(service.duration)}
                         </span>
                       </div>
 
                       <Link
                         href={`/services/${service._id}`}
-                        className="mt-5 block rounded-lg bg-[#4A382E] px-4 py-3 text-center font-medium text-white transition hover:bg-[#6B5B50]"
+                        className="mt-5 block w-full rounded-lg bg-[#4A382E] px-3 py-3 text-center text-sm font-medium sm:px-4 sm:text-base text-white transition hover:bg-[#6B5B50]"
                       >
                         View Details
                       </Link>
@@ -193,3 +195,5 @@ const ServicesPageContent = () => {
 };
 
 export default ServicesPageContent;
+
+

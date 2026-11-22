@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
@@ -121,25 +121,25 @@ const BookingPage = () => {
   if (!isAuthorized) return null;
 
   return (
-    <main className="min-h-screen bg-background px-4 py-12">
-      <div className="mx-auto max-w-xl rounded-2xl bg-card p-6 shadow-sm md:p-8">
-        <div className="mb-8 text-center">
+    <main className="min-h-screen bg-background px-3 py-8 sm:px-4 sm:py-12">
+      <div className="mx-auto max-w-xl rounded-2xl bg-card p-4 shadow-sm sm:p-6 md:p-8">
+        <div className="mb-6 text-center sm:mb-8">
           <p className="font-medium uppercase tracking-widest text-gold-text">
             SalonBook
           </p>
 
-          <h1 className="mt-2 text-3xl font-bold text-foreground">
+          <h1 className="mt-2 text-2xl font-bold text-foreground sm:text-3xl">
             Book Your Appointment
           </h1>
 
-          <p className="mt-2 text-sm text-muted-foreground">
+          <p className="mx-auto mt-2 max-w-sm text-sm text-muted-foreground">
             Choose your preferred date and time.
           </p>
         </div>
 
-        <form onSubmit={handleBooking} className="space-y-5">
+        <form onSubmit={handleBooking} className="space-y-4 sm:space-y-5">
           <div>
-            <label className="mb-2 block font-medium text-foreground">
+            <label className="mb-2 block text-sm font-medium text-foreground sm:text-base">
               Appointment Date
             </label>
 
@@ -148,20 +148,20 @@ const BookingPage = () => {
               min={new Date().toLocaleDateString("en-CA")}
               value={date}
               onChange={(e) => setDate(e.target.value)}
-              className="w-full rounded-lg border border-border bg-background px-4 py-3 text-foreground outline-none focus:border-primary"
+              className="w-full rounded-lg border border-border bg-background px-3 py-3 text-sm text-foreground outline-none focus:border-primary sm:px-4 sm:text-base"
               required
             />
           </div>
 
           <div>
-            <label className="mb-2 block font-medium text-foreground">
+            <label className="mb-2 block text-sm font-medium text-foreground sm:text-base">
               Available Time Slot
             </label>
 
             <select
               value={timeSlot}
               onChange={(e) => setTimeSlot(e.target.value)}
-              className="w-full rounded-lg border border-border bg-background px-4 py-3 text-foreground outline-none focus:border-primary"
+              className="w-full rounded-lg border border-border bg-background px-3 py-3 text-sm text-foreground outline-none focus:border-primary sm:px-4 sm:text-base"
               required
             >
               <option value="">Select a time slot</option>
@@ -175,7 +175,7 @@ const BookingPage = () => {
           </div>
 
           <div>
-            <label className="mb-2 block font-medium text-foreground">
+            <label className="mb-2 block text-sm font-medium text-foreground sm:text-base">
               Additional Message (Optional)
             </label>
 
@@ -184,7 +184,7 @@ const BookingPage = () => {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Write your message..."
-              className="w-full resize-none rounded-lg border border-border bg-background px-4 py-3 text-foreground outline-none focus:border-primary"
+              className="w-full resize-none rounded-lg border border-border bg-background px-3 py-3 text-sm text-foreground outline-none focus:border-primary sm:px-4 sm:text-base"
             />
           </div>
 
@@ -202,3 +202,4 @@ const BookingPage = () => {
 };
 
 export default BookingPage;
+

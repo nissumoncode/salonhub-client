@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import BackToHome from "@/components/BackToHome";
 import { useCallback, useEffect, useState } from "react";
 import {
@@ -68,14 +68,14 @@ const ManageAppointmentsPage = () => {
   };
 
   if (loading) {
-    return <p className="p-6">Loading appointments...</p>;
+    return <p className="p-3 sm:p-5 md:p-6">Loading appointments...</p>;
   }
 
   return (
-    <div className="space-y-6 p-6">
+    <div className="min-w-0 space-y-5 p-3 sm:space-y-6 sm:p-5 md:p-6">
       <BackToHome />
       <div>
-        <h1 className="text-2xl font-bold text-foreground">
+        <h1 className="text-xl font-bold text-foreground sm:text-2xl">
           Manage Appointments
         </h1>
         <p className="mt-1 text-muted-foreground">
@@ -97,3 +97,4 @@ const ManageAppointmentsPage = () => {
 };
 
 export default ManageAppointmentsPage;
+

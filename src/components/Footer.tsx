@@ -12,16 +12,16 @@ const Footer = () => {
   return (
     <footer className="bg-[#4A382E] text-white">
       {/* Outer Container */}
-      <div className="mx-auto max-w-7xl px-6 py-12">
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12">
         {/* Four Sections Grid */}
-        <div className="grid grid-cols-1 gap-20 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-12 lg:grid-cols-4 lg:gap-8">
           {/* 1. About */}
           <div>
             <h2 className="text-2xl font-bold">
               Salon<span className="text-[#B8955A]">Hub</span>
             </h2>
 
-            <p className="mt-4 text-sm leading-7 text-gray-300">
+            <p className="mt-3 max-w-sm text-sm leading-7 text-gray-300 sm:mt-4">
               Your beauty, our passion. Enjoy professional salon services and
               take care of yourself with SalonHub.
             </p>
@@ -52,16 +52,16 @@ const Footer = () => {
             <h3 className="mb-4 text-lg font-semibold">Contact Us</h3>
 
             <div className="space-y-3 text-sm text-gray-300">
-              <p className="flex items-center gap-2">
+              <p className="flex items-start gap-2">
                 <Phone size={16} /> +880 1XXXXXXXXX
               </p>
-              <p className="flex items-center gap-2">
+              <p className="flex items-start gap-2">
                 <Mail size={16} /> salonhub@example.com
               </p>
-              <p className="flex items-center gap-2">
+              <p className="flex items-start gap-2">
                 <MapPin size={16} /> Bangladesh
               </p>
-              <p className="flex items-center gap-2">
+              <p className="flex items-start gap-2">
                 <Clock size={16} /> Sat - Thu: 10 AM - 8 PM
               </p>
             </div>
@@ -71,7 +71,7 @@ const Footer = () => {
           <div>
             <h3 className="mb-4 text-lg font-semibold">Follow Us</h3>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3 sm:gap-4">
               <a
                 href="#"
                 aria-label="Facebook"
@@ -101,7 +101,7 @@ const Footer = () => {
       </div>
 
       {/* Copyright */}
-      <div className="border-t border-white/20 px-6 py-5 text-center text-sm text-gray-300">
+      <div className="border-t border-white/20 px-4 py-4 text-center text-xs text-gray-300 sm:px-6 sm:py-5 sm:text-sm">
         © {new Date().getFullYear()} SalonHub. All rights reserved.
       </div>
     </footer>
@@ -109,3 +109,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

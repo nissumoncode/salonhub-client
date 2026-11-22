@@ -57,7 +57,7 @@ const SignInForm = () => {
   };
 
   return (
-    <div className="w-full max-w-6xl overflow-hidden rounded-2xl bg-card shadow-xl grid md:grid-cols-2">
+    <div className="w-full max-w-6xl overflow-hidden rounded-2xl bg-card shadow-xl md:grid md:grid-cols-2">
       <section className="hidden md:flex flex-col justify-between bg-background p-10">
         <Link href="/" className="text-3xl font-bold text-foreground">
           Salon<span className="text-gold-text">Hub</span>
@@ -87,8 +87,8 @@ const SignInForm = () => {
         </p>
       </section>
 
-      <section className="flex flex-col justify-center p-6 sm:p-10 lg:p-12">
-        <div className="mb-7">
+      <section className="flex min-w-0 flex-col justify-center p-4 sm:p-8 md:p-10 lg:p-12">
+        <div className="mb-5 sm:mb-7">
           <Link
             href="/"
             className="text-2xl font-bold text-foreground md:hidden"
@@ -96,13 +96,13 @@ const SignInForm = () => {
             Salon<span className="text-gold-text">Hub</span>
           </Link>
 
-          <h1 className="mt-5 text-3xl font-bold text-foreground">Sign In</h1>
-          <p className="mt-2 text-sm text-muted-foreground">
+          <h1 className="mt-4 text-2xl font-bold text-foreground sm:mt-5 sm:text-3xl">Sign In</h1>
+          <p className="mt-2 text-sm leading-6 text-muted-foreground">
             Welcome back! Please enter your details.
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
           <div>
             <label className="mb-2 block text-sm font-medium text-foreground">
               Email Address
@@ -114,7 +114,7 @@ const SignInForm = () => {
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="h-11 rounded-lg pl-10"
+                className="h-11 w-full rounded-lg pl-10"
                 required
               />
             </div>
@@ -131,7 +131,7 @@ const SignInForm = () => {
                 placeholder="Enter your password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="h-11 rounded-lg px-10"
+                className="h-11 w-full rounded-lg px-10"
                 required
               />
               <button
@@ -163,7 +163,7 @@ const SignInForm = () => {
           </Button>
         </form>
 
-        <p className="mt-6 text-center text-sm text-muted-foreground">
+        <p className="mt-5 text-center text-sm leading-6 text-muted-foreground sm:mt-6">
           Don&apos;t have an account?{" "}
           <Link
             href={`/sign-up?callbackURL=${encodeURIComponent(callbackURL)}`}
@@ -178,3 +178,4 @@ const SignInForm = () => {
 };
 
 export default SignInForm;
+

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
@@ -45,10 +45,11 @@ const GoogleAuthCallbackPage = () => {
   }, [router]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
+    <div className="flex min-h-screen items-center justify-center bg-background px-4 text-center">
       <p className="text-muted-foreground">Completing Google sign in...</p>
     </div>
   );
 };
 
 export default GoogleAuthCallbackPage;
+

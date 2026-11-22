@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { Suspense, useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
@@ -75,12 +75,12 @@ const PaymentSuccessContent = () => {
   }, [sessionId]);
 
   return (
-    <main className="flex min-h-[70vh] items-center justify-center p-6">
+    <main className="flex min-h-[70vh] items-center justify-center p-3 sm:p-6">
       <Card className="w-full max-w-lg border-border shadow-sm">
-        <CardContent className="space-y-5 p-8 text-center">
+        <CardContent className="space-y-4 p-4 text-center sm:space-y-5 sm:p-8">
           {displayStatus === "loading" && (
             <>
-              <h1 className="text-2xl font-bold text-foreground">
+              <h1 className="text-xl font-bold sm:text-2xl text-foreground">
                 Verifying Payment
               </h1>
               <p className="text-muted-foreground">
@@ -91,7 +91,7 @@ const PaymentSuccessContent = () => {
 
           {displayStatus === "Paid" && (
             <>
-              <h1 className="text-2xl font-bold text-green-600">
+              <h1 className="text-xl font-bold sm:text-2xl text-green-600">
                 Payment Successful!
               </h1>
               <p className="text-muted-foreground">
@@ -102,7 +102,7 @@ const PaymentSuccessContent = () => {
 
           {displayStatus === "Unpaid" && (
             <>
-              <h1 className="text-2xl font-bold text-foreground">
+              <h1 className="text-xl font-bold sm:text-2xl text-foreground">
                 Payment Processing
               </h1>
               <p className="text-muted-foreground">
@@ -114,7 +114,7 @@ const PaymentSuccessContent = () => {
 
           {displayStatus === "error" && (
             <>
-              <h1 className="text-2xl font-bold text-foreground">
+              <h1 className="text-xl font-bold sm:text-2xl text-foreground">
                 Payment Status Unavailable
               </h1>
               <p className="text-muted-foreground">
@@ -150,3 +150,4 @@ const PaymentSuccessPage = () => {
 };
 
 export default PaymentSuccessPage;
+

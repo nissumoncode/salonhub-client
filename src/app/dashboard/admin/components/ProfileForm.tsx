@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import {
@@ -104,12 +104,12 @@ const ProfileForm = ({
 
   return (
     <Card className="border-border">
-      <CardHeader>
+      <CardHeader className="p-4 sm:p-6">
         <CardTitle className="text-foreground">Personal Information</CardTitle>
         <CardDescription>Update your profile information.</CardDescription>
       </CardHeader>
 
-      <CardContent>
+      <CardContent className="p-4 sm:p-6">
         <form onSubmit={handleSubmit} className="space-y-5">
           <div className="space-y-2">
             <Label htmlFor="name">Full Name</Label>
@@ -174,7 +174,7 @@ const ProfileForm = ({
           <Button
             type="submit"
             disabled={saving}
-            className="bg-[#4A382E] text-white hover:bg-[#6B5B50]"
+            className="w-full bg-[#4A382E] text-white hover:bg-[#6B5B50] sm:w-auto"
           >
             {saving ? "Saving..." : "Save Changes"}
           </Button>
@@ -185,3 +185,4 @@ const ProfileForm = ({
 };
 
 export default ProfileForm;
+

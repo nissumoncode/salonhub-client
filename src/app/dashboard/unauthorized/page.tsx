@@ -15,21 +15,21 @@ const UnauthorizedPage = () => {
   const router = useRouter();
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-background p-4">
+    <main className="flex min-h-screen items-center justify-center bg-background p-3 sm:p-4">
       <Card className="w-full max-w-md border-border text-center shadow-sm">
-        <CardHeader>
-          <div className="mb-3 text-5xl">🛡️</div>
+        <CardHeader className="p-4 sm:p-6">
+          <div className="mb-3 text-5xl">{"\uD83D\uDEE1\uFE0F"}</div>
 
-          <CardTitle className="text-3xl font-bold text-foreground">
+          <CardTitle className="text-2xl font-bold text-foreground sm:text-3xl">
             Access Denied
           </CardTitle>
 
-          <CardDescription className="mt-2 text-xl font-semibold text-gold-text">
+          <CardDescription className="mt-2 text-lg font-semibold text-gold-text sm:text-xl">
             403 - Unauthorized
           </CardDescription>
         </CardHeader>
 
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-4 p-4 pt-0 sm:p-6 sm:pt-0">
           <p className="text-muted-foreground">
             You are not authorized to access this dashboard.
           </p>
@@ -51,3 +51,4 @@ const UnauthorizedPage = () => {
 };
 
 export default UnauthorizedPage;
+

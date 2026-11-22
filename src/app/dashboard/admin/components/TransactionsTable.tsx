@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import type { Transaction } from "@/types/transaction";
 
@@ -18,15 +18,15 @@ interface TransactionsTableProps {
 const TransactionsTable = ({ transactions }: TransactionsTableProps) => {
   if (transactions.length === 0) {
     return (
-      <div className="rounded-lg border bg-card p-6 text-center text-muted-foreground">
+      <div className="rounded-lg border bg-card p-4 sm:p-6 text-center text-muted-foreground">
         No transactions found.
       </div>
     );
   }
 
   return (
-    <div className="overflow-x-auto rounded-lg border bg-card">
-      <Table>
+    <div className="w-full min-w-0 overflow-x-auto rounded-lg border bg-card">
+      <Table className="min-w-[1000px]">
         <TableHeader>
           <TableRow className="bg-secondary hover:bg-secondary">
             <TableHead className="text-foreground">Customer</TableHead>
@@ -81,3 +81,4 @@ const TransactionsTable = ({ transactions }: TransactionsTableProps) => {
 };
 
 export default TransactionsTable;
+

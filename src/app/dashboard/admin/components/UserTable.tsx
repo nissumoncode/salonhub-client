@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import type { Customer } from "@/services/userApi";
 
@@ -26,15 +26,15 @@ const UserTable = ({
 }: UserTableProps) => {
   if (customers.length === 0) {
     return (
-      <div className="rounded-lg border bg-card p-6 text-center text-muted-foreground">
+      <div className="rounded-lg border bg-card p-4 sm:p-6 text-center text-muted-foreground">
         No customers found.
       </div>
     );
   }
 
   return (
-    <div className="overflow-x-auto rounded-xl border bg-card">
-      <Table>
+    <div className="w-full min-w-0 overflow-x-auto rounded-xl border bg-card">
+      <Table className="min-w-[650px]">
         <TableHeader>
           <TableRow className="bg-secondary hover:bg-secondary">
             <TableHead className="text-foreground">Customer</TableHead>
@@ -97,3 +97,4 @@ const UserTable = ({
 };
 
 export default UserTable;
+

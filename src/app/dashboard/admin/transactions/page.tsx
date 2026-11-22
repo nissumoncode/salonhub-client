@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import BackToHome from "@/components/BackToHome";
@@ -38,11 +38,11 @@ const TransactionsPage = () => {
   }, []);
 
   return (
-    <div className="space-y-6 p-6">
+    <div className="min-w-0 space-y-5 p-3 sm:space-y-6 sm:p-5 md:p-6">
       <BackToHome />
 
       <div>
-        <h1 className="text-2xl font-bold text-foreground">
+        <h1 className="text-xl font-bold text-foreground sm:text-2xl">
           Payment Transactions
         </h1>
         <p className="mt-1 text-muted-foreground">
@@ -64,3 +64,4 @@ const TransactionsPage = () => {
 };
 
 export default TransactionsPage;
+

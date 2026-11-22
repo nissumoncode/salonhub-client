@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { createService, uploadServiceImage } from "@/services/serviceApi";
@@ -40,7 +40,8 @@ const AddService = ({ onAdded }: AddServiceProps) => {
     category: "",
     description: "",
     price: "",
-    duration: "",
+    durationHours: "",
+    durationMinutes: "",
     status: "active",
   });
 
@@ -52,14 +53,29 @@ const AddService = ({ onAdded }: AddServiceProps) => {
       !formData.category.trim() ||
       !formData.description.trim() ||
       !formData.price ||
-      !formData.duration
+      (!formData.durationHours && !formData.durationMinutes)
     ) {
       setSaveError("Please fill in all service fields.");
       return;
     }
 
-    if (Number(formData.price) <= 0 || Number(formData.duration) <= 0) {
-      setSaveError("Price and duration must be positive numbers.");
+    const hours = Number(formData.durationHours || 0);
+    const minutes = Number(formData.durationMinutes || 0);
+    const totalDuration = hours * 60 + minutes;
+
+    if (
+      Number(formData.price) <= 0 ||
+      !Number.isFinite(Number(formData.price)) ||
+      !Number.isInteger(hours) ||
+      !Number.isInteger(minutes) ||
+      hours < 0 ||
+      minutes < 0 ||
+      minutes > 59 ||
+      totalDuration <= 0
+    ) {
+      setSaveError(
+        "Enter a valid price and duration. Minutes must be between 0 and 59.",
+      );
       return;
     }
 
@@ -73,7 +89,7 @@ const AddService = ({ onAdded }: AddServiceProps) => {
         category: formData.category.trim(),
         description: formData.description.trim(),
         price: Number(formData.price),
-        duration: Number(formData.duration),
+        duration: totalDuration,
         image: imageUrl,
         status: formData.status,
       });
@@ -83,7 +99,8 @@ const AddService = ({ onAdded }: AddServiceProps) => {
         category: "",
         description: "",
         price: "",
-        duration: "",
+        durationHours: "",
+        durationMinutes: "",
         status: "active",
       });
 
@@ -99,11 +116,11 @@ const AddService = ({ onAdded }: AddServiceProps) => {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger className="bg-[#4A382E] px-4 py-2 text-sm font-medium text-white rounded-md hover:bg-[#3D2D25]">
+      <DialogTrigger className="w-full rounded-md bg-[#4A382E] px-4 py-2 text-sm font-medium text-white hover:bg-[#3D2D25] sm:w-auto">
         Add New Service
       </DialogTrigger>
 
-      <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-xl">
+      <DialogContent className="max-h-[90dvh] w-[calc(100%-1rem)] overflow-y-auto p-4 sm:w-full sm:max-w-xl sm:p-6">
         <DialogHeader>
           <DialogTitle className="text-foreground">Add New Service</DialogTitle>
           <DialogDescription>
@@ -111,16 +128,13 @@ const AddService = ({ onAdded }: AddServiceProps) => {
           </DialogDescription>
         </DialogHeader>
 
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
           <div className="space-y-2">
             <Label>Service Name</Label>
             <Input
               value={formData.serviceName}
               onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  serviceName: e.target.value,
-                })
+                setFormData({ ...formData, serviceName: e.target.value })
               }
               placeholder="Enter service name"
             />
@@ -131,10 +145,7 @@ const AddService = ({ onAdded }: AddServiceProps) => {
             <Input
               value={formData.category}
               onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  category: e.target.value,
-                })
+                setFormData({ ...formData, category: e.target.value })
               }
               placeholder="Enter category"
             />
@@ -145,10 +156,7 @@ const AddService = ({ onAdded }: AddServiceProps) => {
             <Textarea
               value={formData.description}
               onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  description: e.target.value,
-                })
+                setFormData({ ...formData, description: e.target.value })
               }
               placeholder="Enter service description"
               rows={3}
@@ -162,29 +170,51 @@ const AddService = ({ onAdded }: AddServiceProps) => {
               min="1"
               value={formData.price}
               onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  price: e.target.value,
-                })
+                setFormData({ ...formData, price: e.target.value })
               }
               placeholder="Enter price"
             />
           </div>
 
-          <div className="space-y-2">
-            <Label>Estimated Duration (minutes)</Label>
-            <Input
-              type="number"
-              min="1"
-              value={formData.duration}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  duration: e.target.value,
-                })
-              }
-              placeholder="Enter duration"
-            />
+          <div className="space-y-2 sm:col-span-2">
+            <Label>Estimated Duration</Label>
+
+            <div className="grid grid-cols-2 gap-3">
+              <div className="space-y-1">
+                <Label className="text-xs text-muted-foreground">Hours</Label>
+                <Input
+                  type="number"
+                  min="0"
+                  step="1"
+                  value={formData.durationHours}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      durationHours: e.target.value,
+                    })
+                  }
+                  placeholder="Hours"
+                />
+              </div>
+
+              <div className="space-y-1">
+                <Label className="text-xs text-muted-foreground">Minutes</Label>
+                <Input
+                  type="number"
+                  min="0"
+                  max="59"
+                  step="1"
+                  value={formData.durationMinutes}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      durationMinutes: e.target.value,
+                    })
+                  }
+                  placeholder="Minutes (0-59)"
+                />
+              </div>
+            </div>
           </div>
 
           <div className="space-y-2">
@@ -202,10 +232,7 @@ const AddService = ({ onAdded }: AddServiceProps) => {
               value={formData.status}
               onValueChange={(value) => {
                 if (value !== null) {
-                  setFormData({
-                    ...formData,
-                    status: value,
-                  });
+                  setFormData({ ...formData, status: value });
                 }
               }}
             >
@@ -236,3 +263,4 @@ const AddService = ({ onAdded }: AddServiceProps) => {
 };
 
 export default AddService;
+

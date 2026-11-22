@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import BackToHome from "@/components/BackToHome";
 import CustomerOverview from "./components/CustomerOverview";
 import { useEffect, useState } from "react";
@@ -39,10 +39,10 @@ const CustomerDashboard = () => {
   }, []);
 
   return (
-    <div className="space-y-6 p-6">
+    <div className="min-w-0 space-y-5 p-0 sm:space-y-6 sm:p-2">
       <BackToHome />
       <div>
-        <h1 className="text-2xl font-bold">Customer Dashboard</h1>
+        <h1 className="text-xl font-bold sm:text-2xl">Customer Dashboard</h1>
         <p className="text-muted-foreground">Welcome to SalonHub!</p>
       </div>
 
@@ -69,3 +69,4 @@ const CustomerDashboard = () => {
 };
 
 export default CustomerDashboard;
+

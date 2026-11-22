@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -32,8 +32,8 @@ const ProfileInfo = ({ profile, onSave }: ProfileInfoProps) => {
   return (
     <>
       <Card className="border-border shadow-sm">
-        <CardHeader>
-          <div className="flex items-center justify-between">
+        <CardHeader className="p-4 sm:p-6">
+          <div className="flex flex-wrap items-center justify-between gap-3">
             <CardTitle className="text-lg text-foreground">
               Personal Information
             </CardTitle>
@@ -42,8 +42,8 @@ const ProfileInfo = ({ profile, onSave }: ProfileInfoProps) => {
           </div>
         </CardHeader>
 
-        <CardContent>
-          <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
+        <CardContent className="p-4 sm:p-6">
+          <div className="flex min-w-0 flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
             <Avatar className="h-24 w-24">
               <AvatarImage src={profile.image || ""} alt={profile.name} />
               <AvatarFallback className="bg-secondary text-2xl text-secondary-foreground">
@@ -51,7 +51,7 @@ const ProfileInfo = ({ profile, onSave }: ProfileInfoProps) => {
               </AvatarFallback>
             </Avatar>
 
-            <div className="grid flex-1 gap-5 sm:grid-cols-2">
+            <div className="grid min-w-0 flex-1 gap-4 sm:grid-cols-2 sm:gap-5">
               <div>
                 <p className="text-sm text-muted-foreground">Full Name</p>
                 <p className="mt-1 font-medium text-foreground">
@@ -75,8 +75,8 @@ const ProfileInfo = ({ profile, onSave }: ProfileInfoProps) => {
             </div>
           </div>
 
-          <div className="mt-6 flex justify-end border-t border-border pt-4">
-            <Button onClick={() => setEditOpen(true)}>Edit Profile</Button>
+          <div className="mt-5 flex justify-end border-t border-border pt-4 sm:mt-6">
+            <Button className="w-full sm:w-auto" onClick={() => setEditOpen(true)}>Edit Profile</Button>
           </div>
         </CardContent>
       </Card>
@@ -94,3 +94,4 @@ const ProfileInfo = ({ profile, onSave }: ProfileInfoProps) => {
 };
 
 export default ProfileInfo;
+

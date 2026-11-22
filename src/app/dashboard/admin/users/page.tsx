@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import BackToHome from "@/components/BackToHome";
@@ -70,11 +70,11 @@ const ManageUsersPage = () => {
   };
 
   return (
-    <div className="space-y-6 p-6">
+    <div className="min-w-0 space-y-5 p-3 sm:space-y-6 sm:p-5 md:p-6">
       <BackToHome />
       <Card className="border-border">
-        <CardHeader>
-          <CardTitle className="text-2xl text-foreground">
+        <CardHeader className="p-4 sm:p-6">
+          <CardTitle className="text-xl text-foreground sm:text-2xl">
             Manage Users
           </CardTitle>
           <CardDescription>
@@ -82,7 +82,7 @@ const ManageUsersPage = () => {
           </CardDescription>
         </CardHeader>
 
-        <CardContent>
+        <CardContent className="p-3 sm:p-6">
           {loading ? (
             <p className="py-6 text-center text-muted-foreground">
               Loading customers...
@@ -107,3 +107,4 @@ const ManageUsersPage = () => {
 };
 
 export default ManageUsersPage;
+

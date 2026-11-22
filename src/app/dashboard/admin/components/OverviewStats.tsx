@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import {
@@ -56,46 +56,46 @@ const OverviewStats = () => {
   }
 
   return (
-    <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+    <div className="grid min-w-0 grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-5 xl:grid-cols-3">
       {statItems.map((stat) => (
-        <Card key={stat.title} className="border-border">
-          <CardHeader>
+        <Card key={stat.title} className="min-w-0 border-border">
+          <CardHeader className="p-4 sm:p-6">
             <CardTitle className="text-sm font-medium text-muted-foreground">
               {stat.title}
             </CardTitle>
           </CardHeader>
 
-          <CardContent>
-            <p className="text-3xl font-bold text-foreground">
+          <CardContent className="px-4 pb-4 sm:px-6 sm:pb-6">
+            <p className="text-2xl font-bold text-foreground sm:text-3xl">
               {stat.value ?? 0}
             </p>
           </CardContent>
         </Card>
       ))}
 
-      <Card className="border-border">
-        <CardHeader>
+      <Card className="min-w-0 border-border">
+        <CardHeader className="p-4 sm:p-6">
           <CardTitle className="text-sm font-medium text-muted-foreground">
             Successful Payments
           </CardTitle>
         </CardHeader>
 
-        <CardContent>
-          <p className="text-3xl font-bold text-foreground">
+        <CardContent className="px-4 pb-4 sm:px-6 sm:pb-6">
+          <p className="text-2xl font-bold text-foreground sm:text-3xl">
             {stats?.successfulPayments ?? 0}
           </p>
         </CardContent>
       </Card>
 
-      <Card className="border-border">
-        <CardHeader>
+      <Card className="min-w-0 border-border">
+        <CardHeader className="p-4 sm:p-6">
           <CardTitle className="text-sm font-medium text-muted-foreground">
             Payment System Pending
           </CardTitle>
         </CardHeader>
 
-        <CardContent>
-          <p className="text-3xl font-bold text-foreground">
+        <CardContent className="px-4 pb-4 sm:px-6 sm:pb-6">
+          <p className="text-2xl font-bold text-foreground sm:text-3xl">
             {stats?.pendingPayments ?? 0}
           </p>
         </CardContent>
@@ -105,3 +105,4 @@ const OverviewStats = () => {
 };
 
 export default OverviewStats;
+

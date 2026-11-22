@@ -93,7 +93,7 @@ const SignUpForm = () => {
     }
   };
   return (
-    <div className="w-full max-w-6xl overflow-hidden rounded-2xl bg-card shadow-xl grid md:grid-cols-2">
+    <div className="w-full max-w-6xl overflow-hidden rounded-2xl bg-card shadow-xl md:grid md:grid-cols-2">
       {/* Branding */}
       <section className="hidden md:flex flex-col justify-between bg-background p-10">
         <Link href="/" className="text-3xl font-bold text-foreground">
@@ -128,8 +128,8 @@ const SignUpForm = () => {
       </section>
 
       {/* Sign Up Form */}
-      <section className="flex flex-col justify-center p-6 sm:p-10 lg:p-12">
-        <div className="mb-7">
+      <section className="flex min-w-0 flex-col justify-center p-4 sm:p-8 md:p-10 lg:p-12">
+        <div className="mb-5 sm:mb-7">
           <Link
             href="/"
             className="text-2xl font-bold text-foreground md:hidden"
@@ -137,7 +137,7 @@ const SignUpForm = () => {
             Salon<span className="text-gold-text">Hub</span>
           </Link>
 
-          <h1 className="mt-5 text-3xl font-bold text-foreground">
+          <h1 className="mt-4 text-2xl font-bold text-foreground sm:mt-5 sm:text-3xl">
             Create Account
           </h1>
 
@@ -147,7 +147,7 @@ const SignUpForm = () => {
         </div>
 
         {/* Profile Photo */}
-        <div className="mb-6 flex items-center gap-3">
+        <div className="mb-5 flex flex-wrap items-center gap-3 sm:mb-6">
           <div className="relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-full bg-background text-gold-text">
             {profileImage ? (
               <Image
@@ -195,7 +195,7 @@ const SignUpForm = () => {
             onChange={(event) => setProfileImage(event.target.value)}
           />
         </div>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
           {/* Full Name */}
           <div>
             <label className="mb-2 block text-sm font-medium text-foreground">
@@ -208,7 +208,7 @@ const SignUpForm = () => {
                 placeholder="Enter your full name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="h-11 rounded-lg pl-10"
+                className="h-11 w-full rounded-lg pl-10"
               />
             </div>
           </div>
@@ -225,7 +225,7 @@ const SignUpForm = () => {
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="h-11 rounded-lg pl-10"
+                className="h-11 w-full rounded-lg pl-10"
               />
             </div>
           </div>
@@ -242,7 +242,7 @@ const SignUpForm = () => {
                 placeholder="Create a password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="h-11 rounded-lg px-10"
+                className="h-11 w-full rounded-lg px-10"
               />
               <button
                 type="button"
@@ -267,7 +267,7 @@ const SignUpForm = () => {
                 placeholder="Confirm your password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className="h-11 rounded-lg px-10"
+                className="h-11 w-full rounded-lg px-10"
               />
               <button
                 type="button"
@@ -298,7 +298,7 @@ const SignUpForm = () => {
           </Button>
         </form>
 
-        <p className="mt-6 text-center text-sm text-muted-foreground">
+        <p className="mt-5 text-center text-sm leading-6 text-muted-foreground sm:mt-6">
           Already have an account?{" "}
           <Link
             href={`/sign-in?callbackURL=${encodeURIComponent(callbackURL)}`}
@@ -313,3 +313,4 @@ const SignUpForm = () => {
 };
 
 export default SignUpForm;
+
