@@ -49,8 +49,7 @@ const BookingPage = () => {
         };
 
         if (user.isBlocked) {
-          await authClient.signOut();
-          router.replace("/sign-in");
+          router.replace("/dashboard/blocked");
           return;
         }
 
@@ -98,11 +97,20 @@ const BookingPage = () => {
     } catch (error) {
       const err = error as {
         response?: {
+          status?: number;
           data?: {
             message?: string;
           };
         };
       };
+
+      if (
+        err.response?.status === 403 &&
+        err.response.data?.message === "Your account has been blocked."
+      ) {
+        router.replace("/dashboard/blocked");
+        return;
+      }
 
       toast.error(err.response?.data?.message || "Failed to book appointment.");
     } finally {
@@ -202,4 +210,3 @@ const BookingPage = () => {
 };
 
 export default BookingPage;
-

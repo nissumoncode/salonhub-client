@@ -90,7 +90,7 @@ const OverviewStats = () => {
       <Card className="min-w-0 border-border">
         <CardHeader className="p-4 sm:p-6">
           <CardTitle className="text-sm font-medium text-muted-foreground">
-            Payment System Pending
+            Pending Payment
           </CardTitle>
         </CardHeader>
 
@@ -105,4 +105,3 @@ const OverviewStats = () => {
 };
 
 export default OverviewStats;
-
