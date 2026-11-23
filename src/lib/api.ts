@@ -3,9 +3,10 @@ import { authClient } from "./auth-client";
 
 const api = axios.create({
   baseURL:
-    process.env.NODE_ENV === "development"
+    process.env.NEXT_PUBLIC_API_URL ||
+    (process.env.NODE_ENV === "development"
       ? "http://localhost:5000"
-      : "https://salonhub-server.onrender.com",
+      : "https://salonhub-server.onrender.com"),
 });
 
 api.interceptors.request.use(async (config) => {

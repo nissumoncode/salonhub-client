@@ -1,4 +1,5 @@
 ﻿"use client";
+
 import BackToHome from "@/components/BackToHome";
 import { useCallback, useEffect, useState } from "react";
 import MyAppointments, { type Appointment } from "../components/MyAppointments";
@@ -12,6 +13,9 @@ const CustomerAppointmentsPage = () => {
   const [appointments, setAppointments] = useState<Appointment[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [cancellingAppointmentId, setCancellingAppointmentId] = useState<
+    string | null
+  >(null);
 
   const fetchAppointments = useCallback(async () => {
     try {
@@ -47,7 +51,7 @@ const CustomerAppointmentsPage = () => {
       }
     };
 
-    loadAppointments();
+    void loadAppointments();
 
     return () => {
       ignore = true;
@@ -55,20 +59,30 @@ const CustomerAppointmentsPage = () => {
   }, []);
 
   const handleCancel = async (id: string) => {
+    if (cancellingAppointmentId !== null) return;
+
     try {
+      setCancellingAppointmentId(id);
+
       const response = await cancelAppointment(id);
       toast.success(response.message);
+
       await fetchAppointments();
     } catch {
       toast.error("Failed to cancel appointment.");
+    } finally {
+      setCancellingAppointmentId(null);
     }
   };
 
   return (
     <div className="min-w-0 space-y-5 p-3 sm:space-y-6 sm:p-5 md:p-6">
       <BackToHome />
+
       <div>
-        <h1 className="text-xl font-bold text-foreground sm:text-2xl">My Appointments</h1>
+        <h1 className="text-xl font-bold text-foreground sm:text-2xl">
+          My Appointments
+        </h1>
 
         <p className="text-muted-foreground">
           View and manage your appointment requests.
@@ -80,10 +94,10 @@ const CustomerAppointmentsPage = () => {
         loading={loading}
         error={error}
         onCancel={handleCancel}
+        cancellingAppointmentId={cancellingAppointmentId}
       />
     </div>
   );
 };
 
 export default CustomerAppointmentsPage;
-

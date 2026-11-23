@@ -1,44 +1,45 @@
-import Link from "next/link";
+"use client";
 
-const categories = [
-  {
-    name: "Haircut & Styling",
-    icon: "\u2702\uFE0F",
-    description: "Refresh your look with beautiful hairstyles.",
-  },
-  {
-    name: "Hair Coloring",
-    icon: "\uD83C\uDFA8",
-    description: "Explore beautiful hair colors and highlights.",
-  },
-  {
-    name: "Hair Treatment",
-    icon: "\uD83D\uDC86",
-    description: "Give your hair the care it deserves.",
-  },
-  {
-    name: "Facial & Skincare",
-    icon: "\u2728",
-    description: "Keep your skin fresh and glowing.",
-  },
-  {
-    name: "Makeup",
-    icon: "\uD83D\uDC84",
-    description: "Look stunning for every occasion.",
-  },
-  {
-    name: "Manicure & Pedicure",
-    icon: "\uD83D\uDC85",
-    description: "Give your hands and feet extra care.",
-  },
-  {
-    name: "Spa & Massage",
-    icon: "\uD83E\uDDD6",
-    description: "Relax and enjoy a refreshing experience.",
-  },
-];
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { getServices } from "@/services/serviceApi";
+import type { Service } from "@/types/service";
 
 const ServiceCategories = () => {
+  const [categories, setCategories] = useState<string[]>([]);
+
+  useEffect(() => {
+    let ignore = false;
+
+    const loadCategories = async () => {
+      try {
+        const services: Service[] = await getServices();
+
+        if (!ignore) {
+          const uniqueCategories = Array.from(
+            new Set(
+              services
+                .map((service) => service.category.trim())
+                .filter(Boolean),
+            ),
+          );
+
+          setCategories(uniqueCategories);
+        }
+      } catch {
+        if (!ignore) {
+          setCategories([]);
+        }
+      }
+    };
+
+    void loadCategories();
+
+    return () => {
+      ignore = true;
+    };
+  }, []);
+
   return (
     <section className="bg-card px-4 py-10 sm:px-6 sm:py-14 md:py-16">
       <div className="mx-auto max-w-7xl">
@@ -51,23 +52,26 @@ const ServiceCategories = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 min-[480px]:grid-cols-2 sm:gap-6 lg:grid-cols-4">
-          {categories.map((category) => (
-            <Link
-              key={category.name}
-              href={`/services?category=${encodeURIComponent(category.name)}`}
-              className="rounded-xl border border-border bg-background p-5 text-center transition hover:-translate-y-1 hover:shadow-lg sm:p-6"
-            >
-              <span className="text-4xl">{category.icon}</span>
-              <h3 className="mt-4 text-lg font-bold text-foreground">
-                {category.name}
-              </h3>
-              <p className="mt-2 text-sm text-muted-foreground">
-                {category.description}
-              </p>
-            </Link>
-          ))}
-        </div>
+        {categories.length > 0 ? (
+          <div className="grid grid-cols-1 gap-4 min-[480px]:grid-cols-2 sm:gap-6 lg:grid-cols-4">
+            {categories.map((category) => (
+              <Link
+                key={category}
+                href={`/services?category=${encodeURIComponent(category)}`}
+                className="rounded-xl border border-border bg-background p-5 text-center transition hover:-translate-y-1 hover:shadow-lg sm:p-6"
+              >
+                <span className="text-4xl">✨</span>
+                <h3 className="mt-4 text-lg font-bold text-foreground">
+                  {category}
+                </h3>
+              </Link>
+            ))}
+          </div>
+        ) : (
+          <p className="py-8 text-center text-muted-foreground">
+            No service categories available.
+          </p>
+        )}
       </div>
     </section>
   );

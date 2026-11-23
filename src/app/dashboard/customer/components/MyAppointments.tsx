@@ -29,6 +29,7 @@ interface MyAppointmentsProps {
   loading: boolean;
   error: string;
   onCancel: (id: string) => void;
+  cancellingAppointmentId: string | null;
 }
 
 const MyAppointments = ({
@@ -36,21 +37,35 @@ const MyAppointments = ({
   loading,
   error,
   onCancel,
+  cancellingAppointmentId,
 }: MyAppointmentsProps) => {
   const [selectedAppointment, setSelectedAppointment] =
     useState<Appointment | null>(null);
 
   const [detailsOpen, setDetailsOpen] = useState(false);
 
+  const [payingAppointmentId, setPayingAppointmentId] = useState<string | null>(
+    null,
+  );
+
   const handlePayment = async (appointmentId: string) => {
+    if (payingAppointmentId) return;
+
+    setPayingAppointmentId(appointmentId);
+
     try {
       const response = await createCheckoutSession(appointmentId);
 
       if (response.url) {
         window.location.href = response.url;
+        return;
       }
+
+      setPayingAppointmentId(null);
+      toast.error("Failed to start payment. Please try again.");
     } catch (error) {
       console.error("Payment Error:", error);
+      setPayingAppointmentId(null);
       toast.error("Failed to start payment. Please try again.");
     }
   };
@@ -176,9 +191,12 @@ const MyAppointments = ({
                           variant="destructive"
                           size="sm"
                           className="w-full sm:ml-auto sm:w-auto"
+                          disabled={cancellingAppointmentId !== null}
                           onClick={() => onCancel(appointment._id)}
                         >
-                          Cancel Appointment
+                          {cancellingAppointmentId === appointment._id
+                            ? "Cancelling..."
+                            : "Cancel Appointment"}
                         </Button>
                       )}
 
@@ -187,9 +205,12 @@ const MyAppointments = ({
                           <Button
                             size="sm"
                             className="w-full sm:ml-auto sm:w-auto"
+                            disabled={payingAppointmentId !== null}
                             onClick={() => handlePayment(appointment._id)}
                           >
-                            Pay Now
+                            {payingAppointmentId === appointment._id
+                              ? "Processing..."
+                              : "Pay Now"}
                           </Button>
                         )}
 
@@ -222,5 +243,3 @@ const MyAppointments = ({
 };
 
 export default MyAppointments;
-
-

@@ -49,7 +49,7 @@
    npm install
    ```
 
-5. Create a `.env.local` file in the root directory and configure the required environment variable.
+5. Create a `.env.local` file in the root directory and configure the required environment variables.
 
 ## How to Run the Project Locally
 
@@ -74,9 +74,18 @@ npm run lint
 
 ## Required Environment Variables
 
-Add the following variable to `.env.local`:
+Add the following variables to `.env.local`:
 
 - `NEXT_PUBLIC_BETTER_AUTH_URL`
+- `NEXT_PUBLIC_API_URL`
+
+For local development, set the API URL to:
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:5000
+```
+
+For production, set `NEXT_PUBLIC_API_URL` to your deployed backend URL.
 
 ## Live Website Link
 

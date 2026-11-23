@@ -73,7 +73,9 @@ const Footer = () => {
 
             <div className="flex items-center gap-3 sm:gap-4">
               <a
-                href="#"
+                href="https://www.facebook.com/"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Facebook"
                 className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 transition hover:scale-110 hover:bg-white/20"
               >
@@ -81,7 +83,9 @@ const Footer = () => {
               </a>
 
               <a
-                href="#"
+                href="https://www.instagram.com/"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Instagram"
                 className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 transition hover:scale-110 hover:bg-white/20"
               >
@@ -89,7 +93,9 @@ const Footer = () => {
               </a>
 
               <a
-                href="#"
+                href="https://www.youtube.com/"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="YouTube"
                 className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 transition hover:scale-110 hover:bg-white/20"
               >
@@ -109,4 +115,3 @@ const Footer = () => {
 };
 
 export default Footer;
-

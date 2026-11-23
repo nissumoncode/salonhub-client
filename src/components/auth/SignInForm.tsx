@@ -7,8 +7,7 @@ import { authClient } from "@/lib/auth-client";
 import { toast } from "sonner";
 import { Eye, EyeOff, LockKeyhole, Mail } from "lucide-react";
 import { FcGoogle } from "react-icons/fc";
-import { useRouter } from "next/navigation";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -16,6 +15,9 @@ const SignInForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [isSigningIn, setIsSigningIn] = useState(false);
+  const [isGoogleSigningIn, setIsGoogleSigningIn] = useState(false);
+
   const router = useRouter();
   const searchParams = useSearchParams();
   const callbackURL = searchParams.get("callbackURL") || "/";
@@ -23,36 +25,65 @@ const SignInForm = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const { error } = await authClient.signIn.email({
-      email,
-      password,
-    });
+    if (isSigningIn || isGoogleSigningIn) return;
 
-    if (error) {
-      toast.error(error.message);
-      return;
-    }
-    const { data: session } = await authClient.getSession();
-    const role = (session?.user as { role?: string })?.role;
-    console.log("Logged in user:", session?.user);
+    setIsSigningIn(true);
 
-    toast.success("Signed in successfully!");
-    if (role === "admin") {
-      router.push("/dashboard/admin");
-    } else {
-      router.push(callbackURL);
+    try {
+      const { error } = await authClient.signIn.email({
+        email,
+        password,
+      });
+
+      if (error) {
+        toast.error(error.message);
+        return;
+      }
+
+      const { data: session, error: sessionError } =
+        await authClient.getSession();
+
+      if (sessionError || !session) {
+        toast.error("Unable to retrieve your session. Please try again.");
+        return;
+      }
+
+      const role = (session.user as { role?: string })?.role;
+
+      toast.success("Signed in successfully!");
+
+      if (role === "admin") {
+        router.push("/dashboard/admin");
+      } else {
+        router.push(callbackURL);
+      }
+    } catch {
+      toast.error("Sign in failed. Please try again.");
+    } finally {
+      setIsSigningIn(false);
     }
   };
+
   const handleGoogleSignIn = async () => {
-    const redirectURL = `${window.location.origin}/auth/callback?callbackURL=${encodeURIComponent(callbackURL)}`;
+    if (isSigningIn || isGoogleSigningIn) return;
 
-    const { error } = await authClient.signIn.social({
-      provider: "google",
-      callbackURL: redirectURL,
-    });
+    setIsGoogleSigningIn(true);
 
-    if (error) {
-      toast.error(error.message || "Google sign in failed.");
+    try {
+      const redirectURL = `${window.location.origin}/auth/callback?callbackURL=${encodeURIComponent(callbackURL)}`;
+
+      const { error } = await authClient.signIn.social({
+        provider: "google",
+        callbackURL: redirectURL,
+      });
+
+      if (error) {
+        toast.error(error.message || "Google sign in failed.");
+        setIsGoogleSigningIn(false);
+      }
+    } catch {
+      toast.error("Google sign in failed. Please try again.");
+      setIsGoogleSigningIn(false);
     }
   };
 
@@ -96,7 +127,9 @@ const SignInForm = () => {
             Salon<span className="text-gold-text">Hub</span>
           </Link>
 
-          <h1 className="mt-4 text-2xl font-bold text-foreground sm:mt-5 sm:text-3xl">Sign In</h1>
+          <h1 className="mt-4 text-2xl font-bold text-foreground sm:mt-5 sm:text-3xl">
+            Sign In
+          </h1>
           <p className="mt-2 text-sm leading-6 text-muted-foreground">
             Welcome back! Please enter your details.
           </p>
@@ -116,6 +149,7 @@ const SignInForm = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 className="h-11 w-full rounded-lg pl-10"
                 required
+                disabled={isSigningIn || isGoogleSigningIn}
               />
             </div>
           </div>
@@ -133,12 +167,14 @@ const SignInForm = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 className="h-11 w-full rounded-lg px-10"
                 required
+                disabled={isSigningIn || isGoogleSigningIn}
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground"
                 aria-label="Toggle password visibility"
+                disabled={isSigningIn || isGoogleSigningIn}
               >
                 {showPassword ? <Eye size={17} /> : <EyeOff size={17} />}
               </button>
@@ -147,19 +183,23 @@ const SignInForm = () => {
 
           <Button
             type="submit"
+            disabled={isSigningIn || isGoogleSigningIn}
             className="h-11 w-full rounded-lg bg-primary text-primary-foreground hover:bg-primary-hover"
           >
-            Sign In
+            {isSigningIn ? "Signing in..." : "Sign In"}
           </Button>
 
           <Button
             type="button"
             variant="outline"
             onClick={handleGoogleSignIn}
+            disabled={isSigningIn || isGoogleSigningIn}
             className="h-11 w-full rounded-lg border-border text-foreground"
           >
             <FcGoogle size={20} />
-            Continue with Google
+            {isGoogleSigningIn
+              ? "Connecting to Google..."
+              : "Continue with Google"}
           </Button>
         </form>
 
@@ -178,4 +218,3 @@ const SignInForm = () => {
 };
 
 export default SignInForm;
-

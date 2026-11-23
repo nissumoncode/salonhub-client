@@ -34,7 +34,7 @@ const AppointmentForm = ({
 
   return (
     <div className="w-full min-w-0 overflow-x-auto rounded-lg border bg-card">
-      <Table className="min-w-[950px]">
+      <Table className="min-w-237.5">
         <TableHeader>
           <TableRow className="bg-secondary hover:bg-secondary">
             <TableHead className="text-foreground">Customer</TableHead>
@@ -110,4 +110,3 @@ const AppointmentForm = ({
 };
 
 export default AppointmentForm;
-

@@ -29,23 +29,26 @@ const ManageAppointmentsPage = () => {
   useEffect(() => {
     let isMounted = true;
 
-    getAllAppointments()
-      .then((data) => {
+    const loadAppointments = async () => {
+      try {
+        const data = await getAllAppointments();
+
         if (isMounted) {
           setAppointments(data);
           setError("");
         }
-      })
-      .catch(() => {
+      } catch {
         if (isMounted) {
           setError("Failed to load appointments.");
         }
-      })
-      .finally(() => {
+      } finally {
         if (isMounted) {
           setLoading(false);
         }
-      });
+      }
+    };
+
+    void loadAppointments();
 
     return () => {
       isMounted = false;
@@ -84,7 +87,9 @@ const ManageAppointmentsPage = () => {
       </div>
 
       {error && (
-        <p className="rounded-md border border-destructive/30 bg-destructive/10 p-3 text-sm text-destructive">{error}</p>
+        <p className="rounded-md border border-destructive/30 bg-destructive/10 p-3 text-sm text-destructive">
+          {error}
+        </p>
       )}
 
       <AppointmentForm
@@ -97,4 +102,3 @@ const ManageAppointmentsPage = () => {
 };
 
 export default ManageAppointmentsPage;
-

@@ -64,11 +64,22 @@ const EditProfile = ({
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    const trimmedName = name.trim();
+
+    if (!trimmedName) {
+      setError("Name cannot be empty.");
+      return;
+    }
+
     setSaving(true);
     setError("");
 
     try {
-      await onSave({ name, image, phoneNumber });
+      await onSave({
+        name: trimmedName,
+        image,
+        phoneNumber,
+      });
     } catch {
       setError("Failed to update profile. Please try again.");
     } finally {
@@ -114,7 +125,9 @@ const EditProfile = ({
             )}
 
             {uploading && (
-              <p className="text-sm text-muted-foreground">Uploading image...</p>
+              <p className="text-sm text-muted-foreground">
+                Uploading image...
+              </p>
             )}
           </div>
 
@@ -141,7 +154,11 @@ const EditProfile = ({
               Cancel
             </Button>
 
-            <Button type="submit" disabled={saving || uploading} className="w-full sm:w-auto">
+            <Button
+              type="submit"
+              disabled={saving || uploading}
+              className="w-full sm:w-auto"
+            >
               {uploading
                 ? "Uploading..."
                 : saving
@@ -156,4 +173,3 @@ const EditProfile = ({
 };
 
 export default EditProfile;
-

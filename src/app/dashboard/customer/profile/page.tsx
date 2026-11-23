@@ -66,7 +66,9 @@ const CustomerProfilePage = () => {
     <div className="min-w-0 space-y-5 p-3 sm:space-y-6 sm:p-5 md:p-6">
       <BackToHome />
       <div>
-        <h1 className="text-xl font-bold text-foreground sm:text-2xl">My Profile</h1>
+        <h1 className="text-xl font-bold text-foreground sm:text-2xl">
+          My Profile
+        </h1>
         <p className="mt-1 text-sm text-muted-foreground">
           View and manage your profile information.
         </p>
@@ -80,7 +82,7 @@ const CustomerProfilePage = () => {
 
       {error && <p className="text-sm text-destructive">{error}</p>}
 
-      {!loading && !error && profile && (
+      {!loading && profile && (
         <ProfileInfo profile={profile} onSave={handleProfileUpdate} />
       )}
     </div>
@@ -88,4 +90,3 @@ const CustomerProfilePage = () => {
 };
 
 export default CustomerProfilePage;
-

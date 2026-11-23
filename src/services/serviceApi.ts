@@ -1,13 +1,19 @@
 import api from "@/lib/api";
 import type { Service } from "@/types/service";
 
-// Get all services
+// Get all active services (Public)
 export const getServices = async (): Promise<Service[]> => {
   const response = await api.get("/services");
   return response.data;
 };
 
-// Get single service by ID
+// Get all services including inactive (Admin only)
+export const getAdminServices = async (): Promise<Service[]> => {
+  const response = await api.get("/services/admin/all");
+  return response.data;
+};
+
+// Get single active service by ID
 export const getServiceById = async (id: string): Promise<Service> => {
   const response = await api.get(`/services/${id}`);
   return response.data;

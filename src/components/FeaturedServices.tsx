@@ -61,13 +61,19 @@ const FeaturedServices = () => {
               className="overflow-hidden rounded-xl border border-border bg-card shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
             >
               <div className="relative h-48 w-full sm:h-52">
-                <Image
-                  src={service.image}
-                  alt={service.serviceName}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                />
+                {service.image ? (
+                  <Image
+                    src={service.image}
+                    alt={service.serviceName}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center bg-muted text-sm text-muted-foreground">
+                    No Image Available
+                  </div>
+                )}
               </div>
 
               <div className="p-4 sm:p-5">
@@ -75,7 +81,7 @@ const FeaturedServices = () => {
                   {service.category}
                 </span>
 
-                <h3 className="mt-2 break-words text-lg font-bold text-foreground sm:text-xl">
+                <h3 className="mt-2 wrap-break-word text-lg font-bold text-foreground sm:text-xl">
                   {service.serviceName}
                 </h3>
 
@@ -110,5 +116,3 @@ const FeaturedServices = () => {
 };
 
 export default FeaturedServices;
-
-

@@ -19,32 +19,53 @@ const Navbar = () => {
   const router = useRouter();
   const { data: session, isPending } = authClient.useSession();
 
-  const [profile, setProfile] = useState<UserProfile | null>(null);
+  const [profileState, setProfileState] = useState<{
+    userId: string;
+    profile: UserProfile;
+  } | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     let ignore = false;
 
-    if (!session || isPending) return;
+    const userId = session?.user?.id;
+
+    if (isPending || !userId) {
+      return () => {
+        ignore = true;
+      };
+    }
 
     const loadProfile = async () => {
       try {
         const data = await getMyProfile();
 
         if (!ignore) {
-          setProfile(data);
+          setProfileState({
+            userId,
+            profile: data,
+          });
         }
       } catch {
-        // Profile loading failed
+        if (!ignore) {
+          setProfileState(null);
+        }
       }
     };
 
-    loadProfile();
+    void loadProfile();
 
     return () => {
       ignore = true;
     };
   }, [session, isPending]);
+
+  const userId = session?.user?.id;
+
+  const profile =
+    !isPending && userId && profileState?.userId === userId
+      ? profileState.profile
+      : null;
 
   const user = session?.user as
     | {
@@ -81,7 +102,10 @@ const Navbar = () => {
 
         {/* Desktop Navigation */}
         <div className="hidden items-center gap-6 md:flex lg:gap-8">
-          <Link href="/" className="text-foreground transition-colors hover:text-gold-text">
+          <Link
+            href="/"
+            className="text-foreground transition-colors hover:text-gold-text"
+          >
             Home
           </Link>
 

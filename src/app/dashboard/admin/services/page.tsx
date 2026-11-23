@@ -2,7 +2,7 @@
 
 import BackToHome from "@/components/BackToHome";
 import { useEffect, useState } from "react";
-import { getServices } from "@/services/serviceApi";
+import { getAdminServices } from "@/services/serviceApi";
 import type { Service } from "@/types/service";
 import Image from "next/image";
 
@@ -39,7 +39,7 @@ const ManageServicesPage = () => {
 
   const fetchServices = async () => {
     try {
-      const data = await getServices();
+      const data = await getAdminServices();
       setServices(data);
       setError("");
     } catch {
@@ -54,7 +54,7 @@ const ManageServicesPage = () => {
 
     const loadServices = async () => {
       try {
-        const data = await getServices();
+        const data = await getAdminServices();
 
         if (!ignore) {
           setServices(data);
@@ -117,7 +117,7 @@ const ManageServicesPage = () => {
 
           <CardContent className="p-3 sm:p-6">
             <div className="w-full overflow-x-auto">
-              <Table className="min-w-[750px]">
+              <Table className="min-w-187.5">
                 <TableHeader>
                   <TableRow>
                     <TableHead>Image</TableHead>
@@ -196,4 +196,3 @@ const ManageServicesPage = () => {
 };
 
 export default ManageServicesPage;
-
